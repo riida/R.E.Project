@@ -17,9 +17,22 @@
     GMSMapView *mapView_;
 }
 
+@synthesize locationManager;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    locationManager = [[CLLocationManager alloc] init];
+    
+    // 位置情報サービスが利用できるかどうかをチェック
+    if ([CLLocationManager locationServicesEnabled]) {
+        locationManager.delegate = self;
+        // 測位開始
+        [locationManager startUpdatingLocation];
+    } else {
+        NSLog(@"Location services not available.");
+    }
+
     // Do any additional setup after loading the view, typically from a nib.
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:-33.86
                                                             longitude:151.20
@@ -88,5 +101,6 @@
       didFailWithError:(NSError *)error{
     NSLog(@"didFailWithError");
 }
+
 
 @end
