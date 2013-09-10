@@ -21,11 +21,12 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:35.00
-                                                            longitude:140.00
-                                                                 zoom:6];
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:-33.86
+                                                            longitude:151.20
+                                                                 zoom:17];
     mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
     mapView_.myLocationEnabled = YES;
+    mapView_.settings.myLocationButton = YES;
     self.view = mapView_;
     
     // Creates a marker in the center of the map.
@@ -35,12 +36,57 @@
     marker.snippet = @"Japan";
     marker.map = mapView_;
 	
+    //ボタン（スポット追加）
+    UIButton *addsupotto =
+    [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    addsupotto.frame =CGRectMake(10, 10, 100, 30);
+    addsupotto.center = CGPointMake(50, 400);
+    [addsupotto setTitle:@"スポット追加" forState:UIControlStateNormal];
+    [addsupotto addTarget:self action:@selector(buttonPush:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:addsupotto];
+    
+    //人気スポット
+    UIButton *populersupotto =[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    populersupotto.frame = CGRectMake(10, 10, 100, 30);
+    populersupotto.center = CGPointMake(269, 400);
+    [populersupotto setTitle:@"人気スポット" forState:UIControlStateNormal];
+    [populersupotto addTarget:self action:@selector(pButton:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:populersupotto];
+    
+    if([CLLocationManager locationServicesEnabled]){
+        locationManager.delegate = self;
+        [locationManager startUpdatingLocation];
+    }else{
+        NSLog(@"Location services not avaiable");
+    }
+
+}
+
+//スポット追加
+- (void)buttonPush:(UIButton *)addsupotto
+{
+    UIViewController *viewControlle = [self.storyboard instantiateViewControllerWithIdentifier:@"callFromSampleMap"];
+    
+    [self presentViewController:viewControlle animated:YES completion:nil];
+}
+
+//人気スポット
+- (void)pButton:(UIButton *)populersupotto
+{
+    UIViewController *viewControlle = [self.storyboard instantiateViewControllerWithIdentifier:@"supotto"];
+    
+    [self presentViewController:viewControlle animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)locationManager:(CLLocationManager *)manager
+      didFailWithError:(NSError *)error{
+    NSLog(@"didFailWithError");
 }
 
 @end

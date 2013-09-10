@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0414226D17DF5BDA005E12E3 /* createSpotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0414226C17DF5BDA005E12E3 /* createSpotViewController.m */; };
 		B1BB544F17D868360005663B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1BB544E17D868360005663B /* UIKit.framework */; };
 		B1BB545117D868360005663B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1BB545017D868360005663B /* Foundation.framework */; };
 		B1BB545317D868360005663B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1BB545217D868360005663B /* CoreGraphics.framework */; };
@@ -35,6 +36,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0414226B17DF5BDA005E12E3 /* createSpotViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = createSpotViewController.h; sourceTree = "<group>"; };
+		0414226C17DF5BDA005E12E3 /* createSpotViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = createSpotViewController.m; sourceTree = "<group>"; };
 		B1BB544B17D868360005663B /* MapTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1BB544E17D868360005663B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B1BB545017D868360005663B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -138,6 +141,8 @@
 		B1BB545417D868360005663B /* MapTest */ = {
 			isa = PBXGroup;
 			children = (
+				0414226B17DF5BDA005E12E3 /* createSpotViewController.h */,
+				0414226C17DF5BDA005E12E3 /* createSpotViewController.m */,
 				B1BB545D17D868360005663B /* MapTestAppDelegate.h */,
 				B1BB545E17D868360005663B /* MapTestAppDelegate.m */,
 				B1BB546617D868360005663B /* MainStoryboard.storyboard */,
@@ -233,6 +238,7 @@
 				B1BB545B17D868360005663B /* main.m in Sources */,
 				B1BB545F17D868360005663B /* MapTestAppDelegate.m in Sources */,
 				B1BB546B17D868360005663B /* MapTestViewController.m in Sources */,
+				0414226D17DF5BDA005E12E3 /* createSpotViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -369,6 +375,7 @@
 				B1BB547017D868360005663B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
