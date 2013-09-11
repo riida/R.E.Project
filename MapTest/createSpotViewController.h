@@ -11,6 +11,8 @@
 
 @interface createSpotViewController : UIViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate, UITextFieldDelegate, UIScrollViewDelegate, CLLocationManagerDelegate>{
     CLLocationManager *locationManager;
+    double spot_long;
+    double spot_lati;
 }
 
 - (IBAction)startCamera:(id)sender;

@@ -14,6 +14,8 @@
 
 @implementation createSpotViewController
 
+@synthesize locationManager;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -98,13 +100,17 @@
 	[sendDataStringMiddle appendString:boundary];
     [sendDataStringMiddle appendString:@"\r\n"];
     [sendDataStringMiddle appendString:@"Content-Disposition: form-data; name=\"place_lati\"; \r\n\r\n"];
-    [sendDataStringMiddle appendString:@"135.00 \r\n\r\n"];
+    NSString *lati = [NSString stringWithFormat:@"%f", spot_lati];
+    [sendDataStringMiddle appendString:lati];
+    [sendDataStringMiddle appendString:@"\r\n\r\n"];
     
     [sendDataStringMiddle appendString:@"--"];
 	[sendDataStringMiddle appendString:boundary];
     [sendDataStringMiddle appendString:@"\r\n"];
-    [sendDataStringMiddle appendString:[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"place_long\"; \r\n\r\n"]];
-    [sendDataStringMiddle appendString:@"35.00\r\n\r\n"];
+    [sendDataStringMiddle appendString:@"Content-Disposition: form-data; name=\"place_long\"; \r\n\r\n"];
+    NSString *longtitude = [NSString stringWithFormat:@"%f", spot_long];
+    [sendDataStringMiddle appendString:longtitude];
+    [sendDataStringMiddle appendString:@"\r\n\r\n"];
 	
     [sendDataStringMiddle appendString:@"--"];
 	[sendDataStringMiddle appendString:boundary];
@@ -206,6 +212,21 @@
 - (void)keyboardWillBeHidden:(NSNotification*)aNotification
 {
     [_scrollView setContentOffset:CGPointZero animated:YES];
+}
+
+-(void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation{
+    
+    NSLog(@"didUpdateToLocation latitude=%f, longitude=%f",
+          [newLocation coordinate].latitude,
+          [newLocation coordinate].longitude);
+    spot_lati = [newLocation coordinate].latitude;
+    spot_long = [newLocation coordinate].longitude;
+    
+}
+
+-(void)locationManager:(CLLocationManager *)manager
+      didFailWithError:(NSError *)error{
+    NSLog(@"didFailWithError");
 }
 
 @end
