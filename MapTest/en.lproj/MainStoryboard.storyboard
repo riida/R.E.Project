@@ -14,12 +14,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <segue destination="Nli-cM-FFg" kind="push" id="Cnf-5C-mrG"/>
+                        <segue destination="Nli-cM-FFg" kind="modal" identifier="addSpot" id="Cnf-5C-mrG"/>
+                        <segue destination="bam-Ot-DnU" kind="modal" identifier="showRanking" id="KgO-v7-8To"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-587" y="62"/>
+            <point key="canvasLocation" x="-771" y="-6"/>
         </scene>
         <!--Create Spot View Controller-->
         <scene sceneID="My5-Xx-8qr">
@@ -136,7 +137,116 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tcg-Dj-vEF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-12" y="400"/>
+            <point key="canvasLocation" x="-76" y="352"/>
+        </scene>
+        <!--Show Spots View Controller - 人気♡スポット-->
+        <scene sceneID="clq-fs-6F0">
+            <objects>
+                <tableViewController id="vv1-BB-m3j" customClass="ShowSpotsViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Mjx-WJ-SZE">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="2Vs-Mr-bMA" detailTextLabel="roW-k5-n1X" style="IBUITableViewCellStyleSubtitle" id="5iH-WZ-Moq">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Vs-Mr-bMA">
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="roW-k5-n1X">
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <connections>
+                                    <segue destination="H65-Ho-gMu" kind="push" identifier="showDetail" id="4Oi-5i-Pih"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="人気♡スポット" id="bh4-Q7-Uww">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="ayT-vH-j4T">
+                            <connections>
+                                <segue destination="2" kind="modal" id="ttb-0x-ije"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JoZ-Am-djA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="289" y="-415"/>
+        </scene>
+        <!--Spot Detail View Controller-->
+        <scene sceneID="kc0-EZ-azz">
+            <objects>
+                <viewController id="H65-Ho-gMu" customClass="SpotDetailViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8Tr-su-tDi">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="10C-UB-IbE">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JaW-PI-5yP">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0YM-rq-pgc">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="204" id="Fr4-Ns-sHN"/>
+                                    <constraint firstAttribute="width" constant="204" id="cu6-IY-5aD"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="10C-UB-IbE" firstAttribute="top" secondItem="8Tr-su-tDi" secondAttribute="top" constant="65" id="Cea-Rx-X9a"/>
+                            <constraint firstItem="0YM-rq-pgc" firstAttribute="top" secondItem="8Tr-su-tDi" secondAttribute="top" constant="132" id="Eum-9h-10e"/>
+                            <constraint firstItem="JaW-PI-5yP" firstAttribute="centerX" secondItem="8Tr-su-tDi" secondAttribute="centerX" type="default" id="JCR-7r-Fje"/>
+                            <constraint firstItem="JaW-PI-5yP" firstAttribute="leading" secondItem="10C-UB-IbE" secondAttribute="leading" type="default" id="VLC-xK-by0"/>
+                            <constraint firstItem="0YM-rq-pgc" firstAttribute="leading" secondItem="8Tr-su-tDi" secondAttribute="leading" constant="49" id="bO6-pY-6g9"/>
+                            <constraint firstAttribute="bottom" secondItem="JaW-PI-5yP" secondAttribute="bottom" constant="68" id="fOT-bF-8yV"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="52B-bf-qnf"/>
+                    <connections>
+                        <outlet property="descLabel" destination="JaW-PI-5yP" id="ScS-K1-eBy"/>
+                        <outlet property="spotNavi" destination="52B-bf-qnf" id="hzX-9a-KAi"/>
+                        <outlet property="spotPicture" destination="0YM-rq-pgc" id="WWJ-UX-5Z0"/>
+                        <outlet property="titleLabel" destination="10C-UB-IbE" id="5nK-di-o9N"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="htY-VY-spf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="825" y="-410"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Dv6-Oe-zQg">
+            <objects>
+                <navigationController storyboardIdentifier="spotRanking" definesPresentationContext="YES" id="bam-Ot-DnU" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1PD-d6-OZU">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="vv1-BB-m3j" kind="relationship" relationship="rootViewController" id="7mY-tW-fGT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="m99-Ta-hEx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-259" y="-415"/>
         </scene>
     </scenes>
     <classes>
@@ -145,6 +255,18 @@
         </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="ShowSpotsViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ShowSpotsViewController.h"/>
+        </class>
+        <class className="SpotDetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SpotDetailViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="descLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="spotNavi" candidateClass="UINavigationItem"/>
+                <relationship kind="outlet" name="spotPicture" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
+            </relationships>
         </class>
         <class className="createSpotViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/createSpotViewController.h"/>
@@ -160,4 +282,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="ttb-0x-ije"/>
+    </inferredMetricsTieBreakers>
 </document>
