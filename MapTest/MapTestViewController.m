@@ -97,6 +97,18 @@
     // Dispose of any resources that can be recreated.
 }
 
+//位置情報更新時
+-(void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation{
+    [mapView_ animateToLocation:[newLocation coordinate]];
+    
+    NSLog(@"didUpdateToLocation latitude=%f, longitude=%f",
+          [newLocation coordinate].latitude,
+          [newLocation coordinate].longitude);
+    
+    
+}
+
+
 -(void)locationManager:(CLLocationManager *)manager
       didFailWithError:(NSError *)error{
     NSLog(@"didFailWithError");
