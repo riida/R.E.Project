@@ -129,22 +129,17 @@
 	[request setHTTPMethod:@"POST"];
 	[request setHTTPBody:sendData];
 	
-	//[NSURLConnection connectionWithRequest:request delegate:self];
     NSURLResponse* response = nil;
     NSError* error = nil;
     NSData* data = [NSURLConnection
                     sendSynchronousRequest:request
                     returningResponse:&response
                     error:&error];
-    //self.responseData = data;
+    
     NSString* result = [[NSString alloc]
                         initWithData:data
                         encoding:NSASCIIStringEncoding];
-    
-    // NSArray *results = [self parseJson:data];
-    //NSString *picturePath = [results objectAtIndex:0];
     NSLog(@"%@",result);
-    //NSLog(@"%@", picturePath);
 }
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -20,12 +20,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-557" y="-34"/>
+            <point key="canvasLocation" x="-587" y="62"/>
         </scene>
-        <!--View Controller-->
+        <!--Spot Ranking View Controller-->
         <scene sceneID="Iwg-lX-KU5">
             <objects>
-                <viewController storyboardIdentifier="supotto" useStoryboardIdentifierAsRestorationIdentifier="YES" id="leD-SJ-hKY" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="spotRanking" useStoryboardIdentifierAsRestorationIdentifier="YES" id="leD-SJ-hKY" customClass="spotRankingViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vq5-b6-NS1">
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -35,7 +35,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jMT-56-hyF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-12" y="-313"/>
+            <point key="canvasLocation" x="-12" y="-383"/>
         </scene>
         <!--Create Spot View Controller-->
         <scene sceneID="My5-Xx-8qr">
@@ -52,15 +52,15 @@
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ecz-ZA-RLL">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="285" id="Bd3-hf-tHe"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TTA-H5-tiG">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="77" id="8Tl-Vg-WcZ"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="camera">
+                                <state key="normal" title="かめら">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -72,8 +72,11 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l9z-dv-bhB">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="Jm3-pW-SM9"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="send">
+                                <state key="normal" title="のこす♡">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -84,17 +87,62 @@
                                     <action selector="sendDataToServer:" destination="Nli-cM-FFg" eventType="touchUpInside" id="aIe-ty-45k"/>
                                 </connections>
                             </button>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GqO-T5-EkI">
+                                <items>
+                                    <navigationItem title="スポットを残しましょ" id="jq1-kd-6CJ">
+                                        <barButtonItem key="leftBarButtonItem" title="Item" id="2VH-Pr-lN9">
+                                            <connections>
+                                                <segue destination="2" kind="modal" id="0Ih-ik-GxY"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8rU-DS-XAB">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="97" id="LIn-xk-7EP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="タイトル" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bHM-Iw-dDf">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="73" id="Am6-Ae-XOH"/>
+                                    <constraint firstAttribute="height" constant="29" id="icu-Nb-gAO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="説明" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x37-4e-4J3">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="42" id="ea9-pe-3GO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="ecz-ZA-RLL" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="HbP-6P-NgJ"/>
+                            <constraint firstAttribute="bottom" secondItem="ecz-ZA-RLL" secondAttribute="bottom" constant="102" id="25u-sS-hES"/>
+                            <constraint firstItem="GqO-T5-EkI" firstAttribute="top" secondItem="72q-DV-oHf" secondAttribute="top" type="default" id="4cC-Md-muz"/>
+                            <constraint firstItem="x37-4e-4J3" firstAttribute="centerX" secondItem="8rU-DS-XAB" secondAttribute="centerX" type="default" id="Foy-LR-c7i"/>
+                            <constraint firstItem="GqO-T5-EkI" firstAttribute="trailing" secondItem="72q-DV-oHf" secondAttribute="trailing" type="default" id="JVh-0l-uq2"/>
+                            <constraint firstItem="bHM-Iw-dDf" firstAttribute="centerX" secondItem="8rU-DS-XAB" secondAttribute="centerX" type="default" id="K2e-WA-Hue"/>
                             <constraint firstItem="TTA-H5-tiG" firstAttribute="leading" secondItem="72q-DV-oHf" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Lob-pb-ikw"/>
-                            <constraint firstAttribute="bottom" secondItem="TTA-H5-tiG" secondAttribute="bottom" constant="165" id="Rg0-n3-Fct"/>
-                            <constraint firstItem="fOd-S2-iFd" firstAttribute="leading" secondItem="72q-DV-oHf" secondAttribute="leading" constant="57" id="U8I-Nm-JRD"/>
-                            <constraint firstAttribute="trailing" secondItem="l9z-dv-bhB" secondAttribute="trailing" constant="25" id="iKR-8J-DK7"/>
+                            <constraint firstItem="GqO-T5-EkI" firstAttribute="leading" secondItem="72q-DV-oHf" secondAttribute="leading" type="default" id="Rnb-gt-geO"/>
+                            <constraint firstItem="ecz-ZA-RLL" firstAttribute="leading" secondItem="72q-DV-oHf" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="bzu-UR-oRL"/>
+                            <constraint firstItem="x37-4e-4J3" firstAttribute="top" secondItem="8rU-DS-XAB" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="fV4-Tx-AxP"/>
                             <constraint firstItem="l9z-dv-bhB" firstAttribute="baseline" secondItem="TTA-H5-tiG" secondAttribute="baseline" type="default" id="jyZ-1P-ZuS"/>
-                            <constraint firstItem="fOd-S2-iFd" firstAttribute="top" secondItem="72q-DV-oHf" secondAttribute="top" constant="20" symbolic="YES" type="default" id="plH-Rh-Bes"/>
-                            <constraint firstItem="ecz-ZA-RLL" firstAttribute="top" secondItem="fOd-S2-iFd" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="vDL-2b-h1S"/>
+                            <constraint firstAttribute="trailing" secondItem="ecz-ZA-RLL" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="mPE-NU-Zsw"/>
+                            <constraint firstItem="8rU-DS-XAB" firstAttribute="top" secondItem="bHM-Iw-dDf" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="rek-h2-zaH"/>
+                            <constraint firstAttribute="bottom" secondItem="TTA-H5-tiG" secondAttribute="bottom" constant="45" id="s9d-Zs-mis"/>
+                            <constraint firstItem="x37-4e-4J3" firstAttribute="centerX" secondItem="ecz-ZA-RLL" secondAttribute="centerX" type="default" id="sq0-LW-A24"/>
+                            <constraint firstAttribute="trailing" secondItem="l9z-dv-bhB" secondAttribute="trailing" constant="27" id="tna-7Q-s6r"/>
+                            <constraint firstAttribute="bottom" secondItem="x37-4e-4J3" secondAttribute="bottom" constant="144" id="u97-1X-QO3"/>
+                            <constraint firstItem="fOd-S2-iFd" firstAttribute="top" secondItem="72q-DV-oHf" secondAttribute="top" constant="78" id="uj1-9V-Xcv"/>
+                            <constraint firstItem="bHM-Iw-dDf" firstAttribute="centerX" secondItem="fOd-S2-iFd" secondAttribute="centerX" type="default" id="xll-dZ-vCu"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="OCp-dA-d4p"/>
@@ -104,9 +152,28 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tcg-Dj-vEF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-26" y="380"/>
+            <point key="canvasLocation" x="-12" y="400"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="MapTestViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapTestViewController.h"/>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="createSpotViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/createSpotViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="sendDataToServer:"/>
+                <relationship kind="action" name="startCamera:"/>
+                <relationship kind="outlet" name="pictureImage" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="spotRankingViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/spotRankingViewController.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
