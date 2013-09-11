@@ -50,21 +50,21 @@
     marker.map = mapView_;
 	
     //ボタン（スポット追加）
-    UIButton *addsupotto =
+    UIButton *addSpotButton =
     [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    addsupotto.frame =CGRectMake(10, 10, 100, 30);
-    addsupotto.center = CGPointMake(50, 400);
-    [addsupotto setTitle:@"スポット追加" forState:UIControlStateNormal];
-    [addsupotto addTarget:self action:@selector(buttonPush:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:addsupotto];
+    addSpotButton.frame =CGRectMake(10, 10, 100, 30);
+    addSpotButton.center = CGPointMake(50, 400);
+    [addSpotButton setTitle:@"スポット追加" forState:UIControlStateNormal];
+    [addSpotButton addTarget:self action:@selector(buttonPush:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:addSpotButton];
     
     //人気スポット
-    UIButton *populersupotto =[UIButton buttonWithType:UIButtonTypeRoundedRect];
-    populersupotto.frame = CGRectMake(10, 10, 100, 30);
-    populersupotto.center = CGPointMake(269, 400);
-    [populersupotto setTitle:@"人気スポット" forState:UIControlStateNormal];
-    [populersupotto addTarget:self action:@selector(pButton:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:populersupotto];
+    UIButton *populerSpotButton =[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    populerSpotButton.frame = CGRectMake(10, 10, 100, 30);
+    populerSpotButton.center = CGPointMake(269, 400);
+    [populerSpotButton setTitle:@"人気スポット" forState:UIControlStateNormal];
+    [populerSpotButton addTarget:self action:@selector(pButton:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:populerSpotButton];
     
     if([CLLocationManager locationServicesEnabled]){
         locationManager.delegate = self;
@@ -86,7 +86,7 @@
 //人気スポット
 - (void)pButton:(UIButton *)populersupotto
 {
-    UIViewController *viewControlle = [self.storyboard instantiateViewControllerWithIdentifier:@"supotto"];
+    UIViewController *viewControlle = [self.storyboard instantiateViewControllerWithIdentifier:@"spotRanking"];
     
     [self presentViewController:viewControlle animated:YES completion:nil];
 }
