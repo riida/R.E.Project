@@ -33,7 +33,6 @@
 		B1BB548A17D86A090005663B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1BB548917D86A090005663B /* QuartzCore.framework */; };
 		B1BB548C17D86A150005663B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1BB548B17D86A150005663B /* SystemConfiguration.framework */; };
 		B1BB548E17D86E790005663B /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B1BB548D17D86E790005663B /* libc++.dylib */; };
-		B1BE5ECA17E015B900850151 /* spotRankingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1BE5EC917E015B900850151 /* spotRankingViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,8 +68,6 @@
 		B1BB548917D86A090005663B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		B1BB548B17D86A150005663B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		B1BB548D17D86E790005663B /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
-		B1BE5EC817E015B900850151 /* spotRankingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = spotRankingViewController.h; sourceTree = "<group>"; };
-		B1BE5EC917E015B900850151 /* spotRankingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = spotRankingViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,8 +149,6 @@
 				B1BB546917D868360005663B /* MapTestViewController.h */,
 				B1BB546A17D868360005663B /* MapTestViewController.m */,
 				B1BB545517D868360005663B /* Supporting Files */,
-				B1BE5EC817E015B900850151 /* spotRankingViewController.h */,
-				B1BE5EC917E015B900850151 /* spotRankingViewController.m */,
 			);
 			path = MapTest;
 			sourceTree = "<group>";
@@ -244,7 +239,6 @@
 				B1BB545F17D868360005663B /* MapTestAppDelegate.m in Sources */,
 				B1BB546B17D868360005663B /* MapTestViewController.m in Sources */,
 				0414226D17DF5BDA005E12E3 /* createSpotViewController.m in Sources */,
-				B1BE5ECA17E015B900850151 /* spotRankingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
