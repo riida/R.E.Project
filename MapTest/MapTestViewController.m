@@ -43,11 +43,26 @@
     self.view = mapView_;
     
     // Creates a marker in the center of the map.
-    GMSMarker *marker = [[GMSMarker alloc] init];
-    marker.position = CLLocationCoordinate2DMake(35.0, 140.0);
-    marker.title = @"Tokyo";
-    marker.snippet = @"Japan";
-    marker.map = mapView_;
+    NSString* address = @"http://172.30.255.128:8000/spots";
+    
+    NSURL* url = [NSURL URLWithString:address];
+    NSURLRequest* request = [NSURLRequest
+                             requestWithURL:url];
+    NSURLResponse* response = nil;
+    NSError* error = nil;
+    NSData* data = [NSURLConnection
+                    sendSynchronousRequest:request
+                    returningResponse:&response
+                    error:&error];
+    
+    NSArray *results = [self parseJson:data];
+    for(NSDictionary *spot in results){
+        GMSMarker *marker = [[GMSMarker alloc] init];
+        marker.position = CLLocationCoordinate2DMake([spot[@"place_lati"] doubleValue], [spot[@"place_long"] doubleValue]);
+        marker.title = spot[@"title"];
+        marker.snippet = spot[@"desc"];
+        marker.map = mapView_;
+    }
 	
     //ボタン（スポット追加）
     UIButton *addSpotButton =
@@ -104,14 +119,21 @@
     NSLog(@"didUpdateToLocation latitude=%f, longitude=%f",
           [newLocation coordinate].latitude,
           [newLocation coordinate].longitude);
-    
-    
 }
 
 -(void)locationManager:(CLLocationManager *)manager
       didFailWithError:(NSError *)error{
     NSLog(@"didFailWithError");
 }
+
+- (NSArray *)parseJson:(NSData *)parseData {
+    NSError *error = nil;
+    NSArray *array = [NSJSONSerialization JSONObjectWithData:parseData
+                                                     options:NSJSONReadingAllowFragments
+                                                       error:&error];
+    return array;
+}
+
 
 
 @end
