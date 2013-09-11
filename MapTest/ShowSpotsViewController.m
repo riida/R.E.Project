@@ -156,12 +156,14 @@
     NSArray *array = [NSJSONSerialization JSONObjectWithData:parseData
                                                      options:NSJSONReadingAllowFragments
                                                        error:&error];
+    /*
     NSMutableArray *resultsArray = [[NSMutableArray alloc] init];
     for (NSDictionary *obj in array) {
         [resultsArray addObject:obj];
     }
+    */
     // JSON のオブジェクトは NSDictionary に変換されている
-    return resultsArray;
+    return array;
 }
 
 
