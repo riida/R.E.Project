@@ -37,6 +37,7 @@
     _descTF.delegate = self;
     [_cameraButton setTitle:@"かめら" forState:UIControlStateNormal];
     [_sendButton setTitle:@"のこす" forState:UIControlStateNormal];
+    //スポットのカテゴリの初期化
     spotCategory = CATEGORY_OMO;
     
     [self registerForKeyboardNotifications];
@@ -117,6 +118,14 @@
     [sendDataStringMiddle appendString:@"Content-Disposition: form-data; name=\"place_long\"; \r\n\r\n"];
     NSString *longtitude = [NSString stringWithFormat:@"%f", spot_long];
     [sendDataStringMiddle appendString:longtitude];
+    [sendDataStringMiddle appendString:@"\r\n\r\n"];
+    
+    [sendDataStringMiddle appendString:@"--"];
+	[sendDataStringMiddle appendString:boundary];
+    [sendDataStringMiddle appendString:@"\r\n"];
+    [sendDataStringMiddle appendString:@"Content-Disposition: form-data; name=\"category\"; \r\n\r\n"];
+    NSString *spotcategory = [NSString stringWithFormat:@"%d", spotCategory];
+    [sendDataStringMiddle appendString:spotcategory];
     [sendDataStringMiddle appendString:@"\r\n\r\n"];
 	
     [sendDataStringMiddle appendString:@"--"];
