@@ -158,6 +158,7 @@
                 if([spot[@"category"] intValue] == CATEGORY_OMO) {
                     GMSMarker *marker = [[GMSMarker alloc] init];
                     marker.position = CLLocationCoordinate2DMake([spot[@"place_lati"] doubleValue], [spot[@"place_long"] doubleValue]);
+                    marker.icon =[UIImage imageNamed:@""];
                     marker.title = spot[@"title"];
                     marker.snippet = spot[@"desc"];
                     marker.userData = spot[@"_id"];
@@ -172,6 +173,7 @@
                 if([spot[@"category"] intValue] == CATEGORY_MOE) {
                     GMSMarker *marker = [[GMSMarker alloc] init];
                     marker.position = CLLocationCoordinate2DMake([spot[@"place_lati"] doubleValue], [spot[@"place_long"] doubleValue]);
+                    marker.icon =[UIImage imageNamed:@""];
                     marker.title = spot[@"title"];
                     marker.snippet = spot[@"desc"];
                     marker.userData = spot[@"_id"];
@@ -186,6 +188,7 @@
                 if([spot[@"category"] intValue] == CATEGORY_TIN) {
                     GMSMarker *marker = [[GMSMarker alloc] init];
                     marker.position = CLLocationCoordinate2DMake([spot[@"place_lati"] doubleValue], [spot[@"place_long"] doubleValue]);
+                    marker.icon =[UIImage imageNamed:@""];
                     marker.title = spot[@"title"];
                     marker.snippet = spot[@"desc"];
                     marker.userData = spot[@"_id"];
@@ -198,6 +201,7 @@
             for(NSDictionary *spot in results){
                 GMSMarker *marker = [[GMSMarker alloc] init];
                 marker.position = CLLocationCoordinate2DMake([spot[@"place_lati"] doubleValue], [spot[@"place_long"] doubleValue]);
+                marker.icon =[UIImage imageNamed:@""];
                 marker.title = spot[@"title"];
                 marker.snippet = spot[@"desc"];
                 marker.userData = spot[@"_id"];
