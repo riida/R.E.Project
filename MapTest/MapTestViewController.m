@@ -10,10 +10,6 @@
 #import "DetailViewController.h"
 #import <GoogleMaps/GoogleMaps.h>
 
-#define URL_STRING @"http://172.30.254.141:8000/"
-//#define URL_STRING @"http://192.168.11.2:8000/"
-//#define URL_STRING @"http://ec2-54-250-229-175.ap-northeast-1.compute.amazonaws.com:8000/"
-
 @interface MapTestViewController ()<GMSMapViewDelegate, UITabBarControllerDelegate>{
     
 }
@@ -60,7 +56,7 @@
                              requestWithURL:url];
     NSURLResponse* response = nil;
     NSError* error = nil;
-    NSData* data = [NSURLConnection
+    data = [NSURLConnection
                     sendSynchronousRequest:request
                     returningResponse:&response
                     error:&error];
@@ -84,14 +80,8 @@
     // ツールバーを親Viewに追加
     [self.view addSubview:toolBar];
     
-    UIBarButtonItem * btn0 = [[UIBarButtonItem alloc] initWithTitle:@"切替" style:UIBarButtonItemStyleBordered target:self action:@selector( onTapChangeA:)];
-    UIBarButtonItem * btn1 = [[UIBarButtonItem alloc] initWithTitle:@"もえ" style:UIBarButtonItemStyleBordered target:self action:@selector( onTapTest:)];
-    UIBarButtonItem * btn2 = [[UIBarButtonItem alloc] initWithTitle:@"おも" style:UIBarButtonItemStyleBordered target:self action:@selector( onTapTest:)];
-    UIBarButtonItem * btn3 = [[UIBarButtonItem alloc] initWithTitle:@"ちん" style:UIBarButtonItemStyleBordered target:self action:@selector( onTapTest:)];
-    UIBarButtonItem * btn4 = [[UIBarButtonItem alloc] initWithTitle:@"ぜん" style:UIBarButtonItemStyleBordered target:self action:@selector( onTapTest:)];
-    // ボタン配列をツールバーに設定する
-    toolBar.items = [NSArray arrayWithObjects:btn0, btn1, btn2, btn3, btn4, nil];
-    // 略
+    [self changeButtons:YES];
+    
     if([CLLocationManager locationServicesEnabled]){
         locationManager.delegate = self;
         [locationManager startUpdatingLocation];
@@ -107,10 +97,10 @@
         {
             // ボタン群のAパターンを作成する
             UIBarButtonItem * btn0 = [[UIBarButtonItem alloc] initWithTitle:@"切替" style:UIBarButtonItemStyleBordered target:self action:@selector(onTapChangeA:)];
-            UIBarButtonItem * btn1 = [[UIBarButtonItem alloc] initWithTitle:@"もえ" style:UIBarButtonItemStyleBordered target:self action:@selector( onTapTest:)];
-            UIBarButtonItem * btn2 = [[UIBarButtonItem alloc] initWithTitle:@"おも" style:UIBarButtonItemStyleBordered target:self action:@selector( onTapTest:)];
-            UIBarButtonItem * btn3 = [[UIBarButtonItem alloc] initWithTitle:@"ちん" style:UIBarButtonItemStyleBordered target:self action:@selector( onTapTest:)];
-            UIBarButtonItem * btn4 = [[UIBarButtonItem alloc] initWithTitle:@"ぜん" style:UIBarButtonItemStyleBordered target:self action:@selector( onTapTest:)];
+            UIBarButtonItem * btn1 = [[UIBarButtonItem alloc] initWithTitle:@"おも" style:UIBarButtonItemStyleBordered target:self action:@selector( onFilterOmo:)];
+            UIBarButtonItem * btn2 = [[UIBarButtonItem alloc] initWithTitle:@"もえ" style:UIBarButtonItemStyleBordered target:self action:@selector( onFilterMoe:)];
+            UIBarButtonItem * btn3 = [[UIBarButtonItem alloc] initWithTitle:@"ちん" style:UIBarButtonItemStyleBordered target:self action:@selector( onFilterTin:)];
+            UIBarButtonItem * btn4 = [[UIBarButtonItem alloc] initWithTitle:@"ぜん" style:UIBarButtonItemStyleBordered target:self action:@selector( onNoFilter:)];
             newButtonArray = [ NSArray arrayWithObjects:btn0, btn1, btn2, btn3, btn4, nil ];
         }
         else
@@ -126,13 +116,6 @@
         [toolBar setItems:newButtonArray animated:YES ];
         return;
 }
-    
-
-- (void)onTapTest:(id)inSender
-{
-    // ボタンを押された時の処理をここに追加
-    return;
-}
 
 - (void)onTapChangeA:(id)inSender
 {
@@ -146,6 +129,82 @@
     return;
 }
 
+-(void)onNoFilter:(id)inSender{
+    [self makeMarker:CATEGORY_ZEN];
+}
+
+-(void)onFilterOmo:(id)inSender{
+    [self makeMarker:CATEGORY_OMO];
+}
+
+-(void)onFilterMoe:(id)inSender{
+    [self makeMarker:CATEGORY_MOE];
+}
+
+-(void)onFilterTin:(id)inSender{
+    [self makeMarker:CATEGORY_TIN];
+}
+
+-(void)makeMarker:(int)category{
+    [mapView_ clear];
+    NSArray *results = [self parseJson:data];
+    markerDictionary = [NSMutableDictionary dictionaryWithCapacity:[results count]];
+    
+    switch (category) {
+        case CATEGORY_OMO:
+            for(NSDictionary *spot in results){
+                if([spot[@"category"] intValue] == CATEGORY_OMO) {
+                    GMSMarker *marker = [[GMSMarker alloc] init];
+                    marker.position = CLLocationCoordinate2DMake([spot[@"place_lati"] doubleValue], [spot[@"place_long"] doubleValue]);
+                    marker.title = spot[@"title"];
+                    marker.snippet = spot[@"desc"];
+                    marker.userData = spot[@"_id"];
+                    marker.map = mapView_;
+                    [markerDictionary setObject:spot[@"title"] forKey:marker];
+                }
+            }
+            break;
+            
+        case CATEGORY_MOE:
+            for(NSDictionary *spot in results){
+                if([spot[@"category"] intValue] == CATEGORY_MOE) {
+                    GMSMarker *marker = [[GMSMarker alloc] init];
+                    marker.position = CLLocationCoordinate2DMake([spot[@"place_lati"] doubleValue], [spot[@"place_long"] doubleValue]);
+                    marker.title = spot[@"title"];
+                    marker.snippet = spot[@"desc"];
+                    marker.userData = spot[@"_id"];
+                    marker.map = mapView_;
+                    [markerDictionary setObject:spot[@"title"] forKey:marker];
+                }
+            }
+            break;
+            
+        case CATEGORY_TIN:
+            for(NSDictionary *spot in results){
+                if([spot[@"category"] intValue] == CATEGORY_TIN) {
+                    GMSMarker *marker = [[GMSMarker alloc] init];
+                    marker.position = CLLocationCoordinate2DMake([spot[@"place_lati"] doubleValue], [spot[@"place_long"] doubleValue]);
+                    marker.title = spot[@"title"];
+                    marker.snippet = spot[@"desc"];
+                    marker.userData = spot[@"_id"];
+                    marker.map = mapView_;
+                    [markerDictionary setObject:spot[@"title"] forKey:marker];
+                }
+            }
+            break;
+        default:
+            for(NSDictionary *spot in results){
+                GMSMarker *marker = [[GMSMarker alloc] init];
+                marker.position = CLLocationCoordinate2DMake([spot[@"place_lati"] doubleValue], [spot[@"place_long"] doubleValue]);
+                marker.title = spot[@"title"];
+                marker.snippet = spot[@"desc"];
+                marker.userData = spot[@"_id"];
+                marker.map = mapView_;
+                [markerDictionary setObject:spot[@"title"] forKey:marker];
+        }
+        break;
+    }
+}
 
 
 //スポット追加
