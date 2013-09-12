@@ -25,6 +25,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        [SVProgressHUD showWithStatus:@"通信中" maskType:SVProgressHUDMaskTypeBlack];
         // Custom initialization
     }
     return self;
@@ -34,7 +35,7 @@
 {
     [super viewDidLoad];
     self.spotLabel.text = _argument;
-    NSLog(@"string%@", _argument);
+    //[SVProgressHUD showWithStatus:@"通信中" maskType:SVProgressHUDMaskTypeBlack];
     NSString* dir = URL_STRING;
     NSString* picId = _argument;
     NSString* base = [dir stringByAppendingString:@"spot?id="];
@@ -48,6 +49,8 @@
                     sendSynchronousRequest:request
                     returningResponse:&response
                     error:&error];
+    
+    [SVProgressHUD dismiss];
 
     spotDic = [NSJSONSerialization JSONObjectWithData:data
                                                      options:NSJSONReadingAllowFragments
@@ -73,6 +76,7 @@
 
 //いいねボタンの処理
 - (IBAction)valueButton:(id)sender {
+    
     NSString* dir = URL_STRING;
     NSString* picId = _argument;
     NSString* base = [dir stringByAppendingString:@"estimate?id="];
