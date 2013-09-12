@@ -20,7 +20,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-771" y="-6"/>
+            <point key="canvasLocation" x="-763" y="-132"/>
         </scene>
         <!--Create Spot View Controller-->
         <scene sceneID="My5-Xx-8qr">
@@ -156,7 +156,81 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tcg-Dj-vEF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-76" y="352"/>
+            <point key="canvasLocation" x="-235" y="208"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="PVV-pA-W3a">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vxW-Mc-PhH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="spotDetailFromMap" id="sjP-TR-lV7" customClass="DetailViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="faf-tq-ARe">
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qc6-aJ-AGd">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xe4-fD-dTn">
+                                <items>
+                                    <navigationItem title="Title" id="SAu-kj-BFs">
+                                        <barButtonItem key="leftBarButtonItem" title="Item" id="Y5e-lT-Uoy">
+                                            <connections>
+                                                <segue destination="2" kind="modal" id="vjE-nb-tHI"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GcV-QH-AbT">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="いいね">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="valueButton:" destination="sjP-TR-lV7" eventType="touchUpInside" id="8xf-ED-ELn"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ejB-yL-Mb2">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="217" id="JyK-df-NBp"/>
+                                    <constraint firstAttribute="width" constant="224" id="Wgl-vL-4hG"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZL3-Sj-Ruk">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Xe4-fD-dTn" firstAttribute="centerX" secondItem="qc6-aJ-AGd" secondAttribute="centerX" type="default" id="D6g-gP-MAh"/>
+                            <constraint firstItem="ZL3-Sj-Ruk" firstAttribute="centerX" secondItem="GcV-QH-AbT" secondAttribute="centerX" type="default" id="G8y-i0-Y7i"/>
+                            <constraint firstItem="ejB-yL-Mb2" firstAttribute="top" secondItem="faf-tq-ARe" secondAttribute="top" constant="129" id="IH9-jl-cac"/>
+                            <constraint firstItem="Xe4-fD-dTn" firstAttribute="trailing" secondItem="faf-tq-ARe" secondAttribute="trailing" type="default" id="N93-l6-q0a"/>
+                            <constraint firstItem="Xe4-fD-dTn" firstAttribute="leading" secondItem="faf-tq-ARe" secondAttribute="leading" type="default" id="Qrt-xc-0QE"/>
+                            <constraint firstItem="Xe4-fD-dTn" firstAttribute="top" secondItem="faf-tq-ARe" secondAttribute="top" type="default" id="SMg-bK-Cxe"/>
+                            <constraint firstItem="qc6-aJ-AGd" firstAttribute="top" secondItem="faf-tq-ARe" secondAttribute="top" constant="77" id="lxB-6r-gnt"/>
+                            <constraint firstAttribute="bottom" secondItem="ZL3-Sj-Ruk" secondAttribute="bottom" constant="164" id="oRn-fI-Nfl"/>
+                            <constraint firstAttribute="bottom" secondItem="GcV-QH-AbT" secondAttribute="bottom" constant="93" id="qFL-2a-7xy"/>
+                            <constraint firstItem="ZL3-Sj-Ruk" firstAttribute="centerX" secondItem="ejB-yL-Mb2" secondAttribute="centerX" type="default" id="qQx-Wb-x02"/>
+                            <constraint firstItem="ZL3-Sj-Ruk" firstAttribute="leading" secondItem="qc6-aJ-AGd" secondAttribute="leading" type="default" id="xAq-bS-ucr"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="spotDesc" destination="ZL3-Sj-Ruk" id="hAU-k5-re7"/>
+                        <outlet property="spotLabel" destination="qc6-aJ-AGd" id="GJ5-L6-x8l"/>
+                        <outlet property="spotPicture" destination="ejB-yL-Mb2" id="5Tz-7r-f1v"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="-240" y="886"/>
         </scene>
         <!--Show Spots View Controller - 人気♡スポット-->
         <scene sceneID="clq-fs-6F0">
@@ -203,7 +277,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JoZ-Am-djA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="289" y="-415"/>
+            <point key="canvasLocation" x="291" y="-455"/>
         </scene>
         <!--Spot Detail View Controller-->
         <scene sceneID="kc0-EZ-azz">
@@ -253,7 +327,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="htY-VY-spf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="825" y="-410"/>
+            <point key="canvasLocation" x="839" y="-455"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Dv6-Oe-zQg">
@@ -268,48 +342,15 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m99-Ta-hEx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-259" y="-415"/>
+            <point key="canvasLocation" x="-235" y="-455"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="MapTestViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapTestViewController.h"/>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="ShowSpotsViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ShowSpotsViewController.h"/>
-        </class>
-        <class className="SpotDetailViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SpotDetailViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="descLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="spotNavi" candidateClass="UINavigationItem"/>
-                <relationship kind="outlet" name="spotPicture" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="createSpotViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/createSpotViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="sendDataToServer:"/>
-                <relationship kind="action" name="startCamera:"/>
-                <relationship kind="outlet" name="cameraButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="descTF" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="pictureImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="sendButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="titleTF" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="0Ih-ik-GxY"/>
+        <segue reference="vjE-nb-tHI"/>
     </inferredMetricsTieBreakers>
 </document>
