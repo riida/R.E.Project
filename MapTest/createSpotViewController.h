@@ -34,6 +34,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *cameraButton;
 @property (weak, nonatomic) IBOutlet UIButton *sendButton;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *sc;
+
+
 @property(nonatomic, retain) CLLocationManager *locationManager;
 
 - (IBAction)segChanged:(id)sender;

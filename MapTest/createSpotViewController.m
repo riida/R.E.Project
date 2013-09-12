@@ -91,7 +91,6 @@
                           cancelButtonTitle:@"いいえ"
                           otherButtonTitles:@"はい", nil];
     [alert show];
-  
     
     NSString *root = URL_STRING;
     NSString *urlString = [root stringByAppendingString:@"register"];
@@ -185,6 +184,7 @@
                         initWithData:data
                         encoding:NSASCIIStringEncoding];
     NSLog(@"%@",result);
+
 }
 
 /**
@@ -358,7 +358,6 @@
       didFailWithError:(NSError *)error{
     NSLog(@"didFailWithError");
 }
-
 
 - (IBAction)segChanged:(id)sender {
     switch (_sc.selectedSegmentIndex) {
