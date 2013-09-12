@@ -92,9 +92,6 @@
                           otherButtonTitles:@"はい", nil];
     [alert show];
   
-    
-<<<<<<< HEAD
-=======
     NSString *root = URL_STRING;
     NSString *urlString = [root stringByAppendingString:@"register"];
 	
@@ -187,7 +184,7 @@
                         initWithData:data
                         encoding:NSASCIIStringEncoding];
     NSLog(@"%@",result);
->>>>>>> filtering
+
 }
 
 /**
@@ -362,10 +359,6 @@
     NSLog(@"didFailWithError");
 }
 
-<<<<<<< HEAD
-
-
-=======
 - (IBAction)segChanged:(id)sender {
     switch (_sc.selectedSegmentIndex) {
         case CATEGORY_OMO:
@@ -385,5 +378,5 @@
             break;
     }
 }
->>>>>>> filtering
+
 @end
