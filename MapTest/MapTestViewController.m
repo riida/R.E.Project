@@ -28,6 +28,18 @@
 {
     
     [super viewDidLoad];
+    
+    UIImage *omoMK = [UIImage imageNamed:@"greenpin.png"];
+    omoMarker = [self resizeImage:omoMK rect:CGRectMake(0,0,60,100)];
+    
+    UIImage *moeMK = [UIImage imageNamed:@"red.png"];
+    moeMarker = [self resizeImage:moeMK rect:CGRectMake(0,0,60,100)];
+    
+    UIImage *tinMK = [UIImage imageNamed:@"yellow.png"];
+    tinMarker = [self resizeImage:tinMK rect:CGRectMake(0,0,60,100)];
+    
+    //ViewControllerにテスト的に表示させる
+    
     locationManager = [[CLLocationManager alloc] init];
     
     // 位置情報サービスが利用できるかどうかをチェック
@@ -70,6 +82,19 @@
         for(NSDictionary *spot in results){
             GMSMarker *marker = [[GMSMarker alloc] init];
             marker.position = CLLocationCoordinate2DMake([spot[@"place_lati"] doubleValue],[spot[@"place_long"] doubleValue]);
+            switch ([spot[@"category"] intValue]) {
+                case CATEGORY_OMO:
+                    marker.icon = omoMarker;
+                    break;
+                case CATEGORY_MOE:
+                    marker.icon = moeMarker;
+                    break;
+                case CATEGORY_TIN:
+                    marker.icon = tinMarker;
+                    break;
+                default:
+                    break;
+            }
             marker.title = spot[@"title"];
             marker.snippet = spot[@"desc"];
             marker.userData = spot[@"_id"];
@@ -158,7 +183,7 @@
                 if([spot[@"category"] intValue] == CATEGORY_OMO) {
                     GMSMarker *marker = [[GMSMarker alloc] init];
                     marker.position = CLLocationCoordinate2DMake([spot[@"place_lati"] doubleValue], [spot[@"place_long"] doubleValue]);
-                    marker.icon =[UIImage imageNamed:@"yellow.png"];
+                    marker.icon = omoMarker;
                     marker.title = spot[@"title"];
                     marker.snippet = spot[@"desc"];
                     marker.userData = spot[@"_id"];
@@ -173,7 +198,7 @@
                 if([spot[@"category"] intValue] == CATEGORY_MOE) {
                     GMSMarker *marker = [[GMSMarker alloc] init];
                     marker.position = CLLocationCoordinate2DMake([spot[@"place_lati"] doubleValue], [spot[@"place_long"] doubleValue]);
-                    marker.icon =[UIImage imageNamed:@"red.png"];
+                    marker.icon = moeMarker;
                     marker.title = spot[@"title"];
                     marker.snippet = spot[@"desc"];
                     marker.userData = spot[@"_id"];
@@ -188,7 +213,7 @@
                 if([spot[@"category"] intValue] == CATEGORY_TIN) {
                     GMSMarker *marker = [[GMSMarker alloc] init];
                     marker.position = CLLocationCoordinate2DMake([spot[@"place_lati"] doubleValue], [spot[@"place_long"] doubleValue]);
-                    marker.icon =[UIImage imageNamed:@"green.png"];
+                    marker.icon = tinMarker;
                     marker.title = spot[@"title"];
                     marker.snippet = spot[@"desc"];
                     marker.userData = spot[@"_id"];
@@ -201,7 +226,19 @@
             for(NSDictionary *spot in results){
                 GMSMarker *marker = [[GMSMarker alloc] init];
                 marker.position = CLLocationCoordinate2DMake([spot[@"place_lati"] doubleValue], [spot[@"place_long"] doubleValue]);
-                marker.icon =[UIImage imageNamed:@"purplr.png"];
+                switch ([spot[@"category"] intValue]) {
+                    case CATEGORY_OMO:
+                    marker.icon = omoMarker;
+                        break;
+                    case CATEGORY_MOE:
+                        marker.icon = moeMarker;
+                        break;
+                    case CATEGORY_TIN:
+                        marker.icon = tinMarker;
+                        break;
+                    default:
+                        break;
+                }
                 marker.title = spot[@"title"];
                 marker.snippet = spot[@"desc"];
                 marker.userData = spot[@"_id"];
@@ -272,6 +309,19 @@
     [self presentViewController:detailViewController animated:YES completion:^(void){
         [SVProgressHUD dismiss];
     }];
+}
+
+//画像を縮小するクラス
+- (UIImage*)resizeImage:(UIImage *)img rect:(CGRect)rect{
+    
+    UIGraphicsBeginImageContext(rect.size);
+    
+    [img drawInRect:rect];
+    UIImage* resizedImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    
+    return resizedImage;
 }
 
 @end

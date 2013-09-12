@@ -88,7 +88,10 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     cell.textLabel.text = [[results objectAtIndex:indexPath.row] objectForKey:@"title"];
-    cell.detailTextLabel.text = [[results objectAtIndex:indexPath.row] objectForKey:@"pic"];
+    cell.detailTextLabel.text = [[results objectAtIndex:indexPath.row] objectForKey:@"desc"];
+    UIImage *MK = [UIImage imageNamed:@"blue"];
+    UIImage *newMK = [self resizeImage:MK rect:CGRectMake(0,0,50,50)];
+    cell.imageView.image = newMK;
     // Configure the cell...
     
     return cell;
@@ -161,15 +164,19 @@
     NSArray *array = [NSJSONSerialization JSONObjectWithData:parseData
                                                      options:NSJSONReadingAllowFragments
                                                        error:&error];
-    /*
-    NSMutableArray *resultsArray = [[NSMutableArray alloc] init];
-    for (NSDictionary *obj in array) {
-        [resultsArray addObject:obj];
-    }
-    */
-    // JSON のオブジェクトは NSDictionary に変換されている
     return array;
 }
 
+- (UIImage*)resizeImage:(UIImage *)img rect:(CGRect)rect{
+    
+    UIGraphicsBeginImageContext(rect.size);
+    
+    [img drawInRect:rect];
+    UIImage* resizedImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    
+    return resizedImage;
+}
 
 @end

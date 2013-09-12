@@ -24,6 +24,9 @@
     NSString *argument;
     UIToolbar *toolBar;
     NSData *data;
+    UIImage *omoMarker;
+    UIImage *moeMarker;
+    UIImage *tinMarker;
 }
 //ロケーションマネージャー
 @property(nonatomic, retain) CLLocationManager *locationManager;
