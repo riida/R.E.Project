@@ -8,6 +8,9 @@
 
 #import "createSpotViewController.h"
 
+#define URL_STRING @"http://172.30.255.128:8000/"
+//#define URL_STRING @"http://192.168.11.2:8000/"
+
 @interface createSpotViewController ()
 
 @end
@@ -75,7 +78,9 @@
 }
 
 - (IBAction)sendDataToServer:(id)sender {
-    NSString *urlString = @"http://172.30.255.128:8000/register";
+    
+    NSString *root = URL_STRING;
+    NSString *urlString = [root stringByAppendingString:@"register"];
 	
 	// 画像をNSDataに変換
 	NSData *imageData = [[NSData alloc]initWithData:UIImagePNGRepresentation(self.pictureImage.image)];

@@ -9,6 +9,9 @@
 #import "ShowSpotsViewController.h"
 #import "SpotDetailViewController.h"
 
+#define URL_STRING @"http://172.30.255.128:8000/"
+//#define URL_STRING @"http://192.168.11.2:8000/"
+
 @interface ShowSpotsViewController () {
     NSArray *results;
 }
@@ -30,7 +33,8 @@
 {
     [super viewDidLoad];
 
-    NSString* address = @"http://172.30.255.128:8000/spots";
+    NSString* root = URL_STRING;
+    NSString* address = [root stringByAppendingString:@"spots"];
     
     NSURL* url = [NSURL URLWithString:address];
     NSURLRequest* request = [NSURLRequest

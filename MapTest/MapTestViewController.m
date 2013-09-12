@@ -9,6 +9,9 @@
 #import "MapTestViewController.h"
 #import <GoogleMaps/GoogleMaps.h>
 
+#define URL_STRING @"http://172.30.255.128:8000/"
+//#define URL_STRING @"http://192.168.11.2:8000/"
+
 @interface MapTestViewController ()
 
 @end
@@ -43,7 +46,8 @@
     self.view = mapView_;
     
     // Creates a marker in the center of the map.
-    NSString* address = @"http://172.30.255.128:8000/spots";
+    NSString* root = URL_STRING;
+    NSString* address = [root stringByAppendingString:@"spots"];
     
     NSURL* url = [NSURL URLWithString:address];
     NSURLRequest* request = [NSURLRequest

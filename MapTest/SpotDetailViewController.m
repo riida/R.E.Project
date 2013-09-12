@@ -8,6 +8,9 @@
 
 #import "SpotDetailViewController.h"
 
+#define URL_STRING @"http://172.30.255.128:8000/"
+//#define URL_STRING @"http://192.168.11.2:8000/"
+
 @interface SpotDetailViewController ()
 - (void)configureView;
 @end
@@ -29,7 +32,7 @@
         _detailItem = newDetailItem;
         
         // Update the view.
-        [self configureView];
+        //[self configureView];
     }
 }
 
@@ -41,7 +44,7 @@
         //NSLog(@"%@-----\n%@", @"configure",_detailItem);
         self.titleLabel.text = _detailItem[@"title"];
         self.descLabel.text = _detailItem[@"desc"];
-        NSString* dir = @"http://172.30.255.128:8000/";
+        NSString* dir = URL_STRING;
         NSString* picPath = _detailItem[@"pic"];
         NSString* address = [dir stringByAppendingString:picPath];
         NSURL *url = [NSURL URLWithString:address];
