@@ -7,17 +7,22 @@
 //
 
 #import "MapTestViewController.h"
+#import "DetailViewController.h"
 #import <GoogleMaps/GoogleMaps.h>
 
-#define URL_STRING @"http://172.30.255.128:8000/"
+#define URL_STRING @"http://172.30.254.141:8000/"
 //#define URL_STRING @"http://192.168.11.2:8000/"
+//#define URL_STRING @"http://ec2-54-250-229-175.ap-northeast-1.compute.amazonaws.com:8000/"
 
-@interface MapTestViewController ()
+@interface MapTestViewController ()<GMSMapViewDelegate>{
+    
+}
 
 @end
 
 @implementation MapTestViewController{
     GMSMapView *mapView_;
+    NSMutableDictionary *markerDictionary;
 }
 
 @synthesize locationManager;
@@ -37,13 +42,14 @@
     }
 
     // Do any additional setup after loading the view, typically from a nib.
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:-33.86
-                                                            longitude:151.20
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:35.65
+                                                            longitude:139.69
                                                                  zoom:17];
     mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
     mapView_.myLocationEnabled = YES;
     mapView_.settings.myLocationButton = YES;
     self.view = mapView_;
+    mapView_.delegate = self;
     
     // Creates a marker in the center of the map.
     NSString* root = URL_STRING;
@@ -59,13 +65,19 @@
                     returningResponse:&response
                     error:&error];
     
-    NSArray *results = [self parseJson:data];
-    for(NSDictionary *spot in results){
-        GMSMarker *marker = [[GMSMarker alloc] init];
-        marker.position = CLLocationCoordinate2DMake([spot[@"place_lati"] doubleValue], [spot[@"place_long"] doubleValue]);
-        marker.title = spot[@"title"];
-        marker.snippet = spot[@"desc"];
-        marker.map = mapView_;
+    if(data) {
+        NSArray *results = [self parseJson:data];
+        markerDictionary = [NSMutableDictionary dictionaryWithCapacity:[results count]];
+
+        for(NSDictionary *spot in results){
+            GMSMarker *marker = [[GMSMarker alloc] init];
+            marker.position = CLLocationCoordinate2DMake([spot[@"place_lati"] doubleValue], [spot[@"place_long"] doubleValue]);
+            marker.title = spot[@"title"];
+            marker.snippet = spot[@"desc"];
+            marker.userData = spot[@"_id"];
+            marker.map = mapView_;
+            [markerDictionary setObject:spot[@"title"] forKey:marker];
+        }
     }
 	
     //ボタン（スポット追加）
@@ -91,6 +103,8 @@
     }else{
         NSLog(@"Location services not avaiable");
     }
+    
+    
 
 }
 
@@ -138,6 +152,32 @@
     return array;
 }
 
+- (void)mapView:(GMSMapView *)mapView didTapInfoWindowOfMarker:(GMSMarker* )marker{
+    argument = marker.userData;
+    NSLog(@"Jump to %@", argument);
+    //UIViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"spotDetailFromMap"];
+    
+    DetailViewController *detailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"spotDetailFromMap"];
+    
+    //DetailViewController *detailViewController = [[DetailViewController alloc]initWithNibName:@"DetailViewController" bundle:nil];
+    // 渡したい値を設定
+    detailViewController.argument = [[NSString alloc] initWithString:argument];//argument;
+    NSLog(@"prepare\n%@", argument);
+    
+    [self presentViewController:detailViewController animated:YES completion:nil];
+}
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    //2つ目の画面にパラメータを渡して遷移する
+    
+    NSLog(@"segue identifier: %@", segue.identifier);
+    
+    if ([segue.identifier isEqualToString:@"spotDetail"]) {
+        //ここでパラメータを渡す
+        DetailViewController *detailViewController = segue.destinationViewController;
+        detailViewController.argument = argument;
+        NSLog(@"pre\n%@", argument);
+    }
+}
 
 @end

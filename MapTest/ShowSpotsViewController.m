@@ -9,8 +9,9 @@
 #import "ShowSpotsViewController.h"
 #import "SpotDetailViewController.h"
 
-#define URL_STRING @"http://172.30.255.128:8000/"
+#define URL_STRING @"http://172.30.254.141:8000/"
 //#define URL_STRING @"http://192.168.11.2:8000/"
+//#define URL_STRING @"http://ec2-54-250-229-175.ap-northeast-1.compute.amazonaws.com:8000/"
 
 @interface ShowSpotsViewController () {
     NSArray *results;

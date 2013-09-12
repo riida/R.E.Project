@@ -35,6 +35,7 @@
 		B1BB548E17D86E790005663B /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B1BB548D17D86E790005663B /* libc++.dylib */; };
 		B1BE5ED617E051DB00850151 /* ShowSpotsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1BE5ED517E051DA00850151 /* ShowSpotsViewController.m */; };
 		B1BE5ED917E0535E00850151 /* SpotDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1BE5ED817E0535E00850151 /* SpotDetailViewController.m */; };
+		B1BE5EDC17E1640300850151 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1BE5EDB17E1640300850151 /* DetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +75,8 @@
 		B1BE5ED517E051DA00850151 /* ShowSpotsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowSpotsViewController.m; sourceTree = "<group>"; };
 		B1BE5ED717E0535E00850151 /* SpotDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpotDetailViewController.h; sourceTree = "<group>"; };
 		B1BE5ED817E0535E00850151 /* SpotDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpotDetailViewController.m; sourceTree = "<group>"; };
+		B1BE5EDA17E1640300850151 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		B1BE5EDB17E1640300850151 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +162,8 @@
 				B1BE5ED517E051DA00850151 /* ShowSpotsViewController.m */,
 				B1BE5ED717E0535E00850151 /* SpotDetailViewController.h */,
 				B1BE5ED817E0535E00850151 /* SpotDetailViewController.m */,
+				B1BE5EDA17E1640300850151 /* DetailViewController.h */,
+				B1BE5EDB17E1640300850151 /* DetailViewController.m */,
 			);
 			path = MapTest;
 			sourceTree = "<group>";
@@ -251,6 +256,7 @@
 				0414226D17DF5BDA005E12E3 /* createSpotViewController.m in Sources */,
 				B1BE5ED617E051DB00850151 /* ShowSpotsViewController.m in Sources */,
 				B1BE5ED917E0535E00850151 /* SpotDetailViewController.m in Sources */,
+				B1BE5EDC17E1640300850151 /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
