@@ -9,8 +9,8 @@
 #import "DetailViewController.h"
 #import "SVProgressHUD.h"
 
-#define URL_STRING @"http://172.30.254.141:8000/"
-//#define URL_STRING @"http://192.168.11.2:8000/"
+//define URL_STRING @"http://172.30.254.141:8000/"
+#define URL_STRING @"http://192.168.11.2:8000/"
 //#define URL_STRING @"http://ec2-54-250-229-175.ap-northeast-1.compute.amazonaws.com:8000/"
 
 @interface DetailViewController ()

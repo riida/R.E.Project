@@ -123,6 +123,13 @@
 			path = SVProgressHUD;
 			sourceTree = "<group>";
 		};
+		B1AC2CD817E221DA00CE0040 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		B1BB544217D868360005663B = {
 			isa = PBXGroup;
 			children = (
@@ -169,6 +176,7 @@
 		B1BB545417D868360005663B /* MapTest */ = {
 			isa = PBXGroup;
 			children = (
+				B1AC2CD817E221DA00CE0040 /* Images */,
 				0414226B17DF5BDA005E12E3 /* createSpotViewController.h */,
 				0414226C17DF5BDA005E12E3 /* createSpotViewController.m */,
 				B1BB545D17D868360005663B /* MapTestAppDelegate.h */,
