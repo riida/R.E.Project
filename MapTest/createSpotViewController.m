@@ -28,9 +28,12 @@
 
 - (void)viewDidLoad
 {
+     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    _titleTF.delegate = self;
+    
+    
+       _titleTF.delegate = self;
     _descTF.delegate = self;
     [_cameraButton setTitle:@"かめら" forState:UIControlStateNormal];
     [_sendButton setTitle:@"のこす" forState:UIControlStateNormal];

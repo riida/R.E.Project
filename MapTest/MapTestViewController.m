@@ -188,7 +188,7 @@
                 if([spot[@"category"] intValue] == CATEGORY_TIN) {
                     GMSMarker *marker = [[GMSMarker alloc] init];
                     marker.position = CLLocationCoordinate2DMake([spot[@"place_lati"] doubleValue], [spot[@"place_long"] doubleValue]);
-                    marker.icon =[UIImage imageNamed:@""];
+                    marker.icon =[UIImage imageNamed:@"green.png"];
                     marker.title = spot[@"title"];
                     marker.snippet = spot[@"desc"];
                     marker.userData = spot[@"_id"];

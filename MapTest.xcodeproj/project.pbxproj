@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0414226D17DF5BDA005E12E3 /* createSpotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0414226C17DF5BDA005E12E3 /* createSpotViewController.m */; };
 		042346D917E1F17F00AFAC84 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 042346D817E1F17F00AFAC84 /* icon.png */; };
-		042346DB17E21E0400AFAC84 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 042346DA17E21E0400AFAC84 /* background.png */; };
 		042346F817E2268500AFAC84 /* blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 042346F317E2268500AFAC84 /* blue.png */; };
 		042346F917E2268500AFAC84 /* greenpin.png in Resources */ = {isa = PBXBuildFile; fileRef = 042346F417E2268500AFAC84 /* greenpin.png */; };
 		042346FA17E2268500AFAC84 /* purple.png in Resources */ = {isa = PBXBuildFile; fileRef = 042346F517E2268500AFAC84 /* purple.png */; };
@@ -51,12 +50,11 @@
 		0414226B17DF5BDA005E12E3 /* createSpotViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = createSpotViewController.h; sourceTree = "<group>"; };
 		0414226C17DF5BDA005E12E3 /* createSpotViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = createSpotViewController.m; sourceTree = "<group>"; };
 		042346D817E1F17F00AFAC84 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
-		042346DA17E21E0400AFAC84 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
-		042346F317E2268500AFAC84 /* blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue.png; sourceTree = "<group>"; };
-		042346F417E2268500AFAC84 /* greenpin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greenpin.png; sourceTree = "<group>"; };
-		042346F517E2268500AFAC84 /* purple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = purple.png; sourceTree = "<group>"; };
-		042346F617E2268500AFAC84 /* red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red.png; sourceTree = "<group>"; };
-		042346F717E2268500AFAC84 /* yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yellow.png; sourceTree = "<group>"; };
+		042346F317E2268500AFAC84 /* blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blue.png; path = ../pin/blue.png; sourceTree = "<group>"; };
+		042346F417E2268500AFAC84 /* greenpin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = greenpin.png; path = ../pin/greenpin.png; sourceTree = "<group>"; };
+		042346F517E2268500AFAC84 /* purple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = purple.png; path = ../pin/purple.png; sourceTree = "<group>"; };
+		042346F617E2268500AFAC84 /* red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = red.png; path = ../pin/red.png; sourceTree = "<group>"; };
+		042346F717E2268500AFAC84 /* yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = yellow.png; path = ../pin/yellow.png; sourceTree = "<group>"; };
 		04E18E5C17E1C2A0008CC6CD /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
 		04E18E5D17E1C2A0008CC6CD /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		04E18E5E17E1C2A0008CC6CD /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
@@ -128,11 +126,6 @@
 		042346F217E2268500AFAC84 /* pin */ = {
 			isa = PBXGroup;
 			children = (
-				042346F317E2268500AFAC84 /* blue.png */,
-				042346F417E2268500AFAC84 /* greenpin.png */,
-				042346F517E2268500AFAC84 /* purple.png */,
-				042346F617E2268500AFAC84 /* red.png */,
-				042346F717E2268500AFAC84 /* yellow.png */,
 			);
 			path = pin;
 			sourceTree = "<group>";
@@ -157,7 +150,6 @@
 		B1BB544217D868360005663B = {
 			isa = PBXGroup;
 			children = (
-				042346DA17E21E0400AFAC84 /* background.png */,
 				042346D817E1F17F00AFAC84 /* icon.png */,
 				042346F217E2268500AFAC84 /* pin */,
 				04E18E5B17E1C2A0008CC6CD /* SVProgressHUD */,
@@ -205,6 +197,11 @@
 				B1AC2CD817E221DA00CE0040 /* Images */,
 				0414226B17DF5BDA005E12E3 /* createSpotViewController.h */,
 				0414226C17DF5BDA005E12E3 /* createSpotViewController.m */,
+				042346F317E2268500AFAC84 /* blue.png */,
+				042346F417E2268500AFAC84 /* greenpin.png */,
+				042346F517E2268500AFAC84 /* purple.png */,
+				042346F617E2268500AFAC84 /* red.png */,
+				042346F717E2268500AFAC84 /* yellow.png */,
 				B1BB545D17D868360005663B /* MapTestAppDelegate.h */,
 				B1BB545E17D868360005663B /* MapTestAppDelegate.m */,
 				B1BB546617D868360005663B /* MainStoryboard.storyboard */,
@@ -295,7 +292,6 @@
 				B1BB547417D8693B0005663B /* GoogleMaps.bundle in Resources */,
 				04E18E5F17E1C2A0008CC6CD /* SVProgressHUD.bundle in Resources */,
 				042346D917E1F17F00AFAC84 /* icon.png in Resources */,
-				042346DB17E21E0400AFAC84 /* background.png in Resources */,
 				042346F817E2268500AFAC84 /* blue.png in Resources */,
 				042346F917E2268500AFAC84 /* greenpin.png in Resources */,
 				042346FA17E2268500AFAC84 /* purple.png in Resources */,
