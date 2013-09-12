@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -211,9 +211,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="GcV-QH-AbT" secondAttribute="bottom" constant="61" id="2b9-Ts-5Q8"/>
                             <constraint firstItem="Xe4-fD-dTn" firstAttribute="centerX" secondItem="qc6-aJ-AGd" secondAttribute="centerX" type="default" id="D6g-gP-MAh"/>
-                            <constraint firstAttribute="bottom" secondItem="GcV-QH-AbT" secondAttribute="bottom" constant="36" id="Fkz-XJ-JiO"/>
-                            <constraint firstItem="ZL3-Sj-Ruk" firstAttribute="centerX" secondItem="GcV-QH-AbT" secondAttribute="centerX" type="default" id="G8y-i0-Y7i"/>
+                            <constraint firstItem="GcV-QH-AbT" firstAttribute="leading" secondItem="faf-tq-ARe" secondAttribute="leading" constant="63" id="DL5-XB-6t2"/>
                             <constraint firstItem="Xe4-fD-dTn" firstAttribute="trailing" secondItem="faf-tq-ARe" secondAttribute="trailing" type="default" id="N93-l6-q0a"/>
                             <constraint firstItem="Xe4-fD-dTn" firstAttribute="leading" secondItem="faf-tq-ARe" secondAttribute="leading" type="default" id="Qrt-xc-0QE"/>
                             <constraint firstItem="Xe4-fD-dTn" firstAttribute="top" secondItem="faf-tq-ARe" secondAttribute="top" type="default" id="SMg-bK-Cxe"/>
@@ -382,11 +382,13 @@
         <class className="createSpotViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/createSpotViewController.h"/>
             <relationships>
+                <relationship kind="action" name="segChanged:"/>
                 <relationship kind="action" name="sendDataToServer:"/>
                 <relationship kind="action" name="startCamera:"/>
                 <relationship kind="outlet" name="cameraButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="descTF" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="pictureImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="sc" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
                 <relationship kind="outlet" name="sendButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="titleTF" candidateClass="UITextField"/>
@@ -399,6 +401,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="0Ih-ik-GxY"/>
+        <segue reference="vjE-nb-tHI"/>
     </inferredMetricsTieBreakers>
 </document>
