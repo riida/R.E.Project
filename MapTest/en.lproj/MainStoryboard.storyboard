@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -106,13 +106,13 @@
                                 <constraints>
                                     <constraint firstItem="l9z-dv-bhB" firstAttribute="leading" secondItem="gD3-OL-lmQ" secondAttribute="leading" constant="228" id="2BR-Iu-tDS"/>
                                     <constraint firstItem="8rU-DS-XAB" firstAttribute="top" secondItem="bHM-Iw-dDf" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="2WB-gW-w2Q"/>
+                                    <constraint firstItem="fOd-S2-iFd" firstAttribute="centerX" secondItem="bHM-Iw-dDf" secondAttribute="centerX" type="default" id="3u9-EQ-jv0"/>
                                     <constraint firstItem="bHM-Iw-dDf" firstAttribute="top" secondItem="gD3-OL-lmQ" secondAttribute="top" constant="212" id="9JQ-pK-R9W"/>
                                     <constraint firstItem="x37-4e-4J3" firstAttribute="top" secondItem="gD3-OL-lmQ" secondAttribute="top" constant="294" id="AJL-fl-e6f"/>
                                     <constraint firstItem="ecz-ZA-RLL" firstAttribute="leading" secondItem="gD3-OL-lmQ" secondAttribute="leading" constant="27" id="BKg-U7-9Gz"/>
                                     <constraint firstItem="ecz-ZA-RLL" firstAttribute="centerX" secondItem="8rU-DS-XAB" secondAttribute="centerX" type="default" id="HSK-dq-Gqt"/>
                                     <constraint firstItem="bHM-Iw-dDf" firstAttribute="centerX" secondItem="8rU-DS-XAB" secondAttribute="centerX" type="default" id="Kh3-SK-gn3"/>
                                     <constraint firstAttribute="bottom" secondItem="TTA-H5-tiG" secondAttribute="bottom" constant="6" id="NHp-Ax-tM3"/>
-                                    <constraint firstItem="bHM-Iw-dDf" firstAttribute="centerX" secondItem="fOd-S2-iFd" secondAttribute="centerX" type="default" id="QmV-7i-E4c"/>
                                     <constraint firstItem="ecz-ZA-RLL" firstAttribute="top" secondItem="x37-4e-4J3" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Rgk-K0-V55"/>
                                     <constraint firstItem="TTA-H5-tiG" firstAttribute="top" secondItem="gD3-OL-lmQ" secondAttribute="top" constant="367" id="YCW-za-t9p"/>
                                     <constraint firstItem="TTA-H5-tiG" firstAttribute="leading" secondItem="gD3-OL-lmQ" secondAttribute="leading" constant="37" id="gSX-dx-E4I"/>
@@ -351,54 +351,12 @@
             <point key="canvasLocation" x="-235" y="-455"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="DetailViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DetailViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="valueButton:"/>
-                <relationship kind="outlet" name="spotDesc" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="spotLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="spotPicture" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="MapTestViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapTestViewController.h"/>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="ShowSpotsViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ShowSpotsViewController.h"/>
-        </class>
-        <class className="SpotDetailViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SpotDetailViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="descLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="spotNavi" candidateClass="UINavigationItem"/>
-                <relationship kind="outlet" name="spotPicture" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="createSpotViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/createSpotViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="sendDataToServer:"/>
-                <relationship kind="action" name="startCamera:"/>
-                <relationship kind="outlet" name="cameraButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="descTF" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="pictureImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="sendButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="titleTF" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="vjE-nb-tHI"/>
+        <segue reference="0Ih-ik-GxY"/>
     </inferredMetricsTieBreakers>
 </document>

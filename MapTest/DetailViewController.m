@@ -7,6 +7,7 @@
 //
 
 #import "DetailViewController.h"
+#import "SVProgressHUD.h"
 
 #define URL_STRING @"http://172.30.254.141:8000/"
 //#define URL_STRING @"http://192.168.11.2:8000/"
@@ -69,6 +70,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+//いいねボタンの処理
 - (IBAction)valueButton:(id)sender {
     NSString* dir = URL_STRING;
     NSString* picId = _argument;

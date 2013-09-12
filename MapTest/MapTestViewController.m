@@ -8,6 +8,7 @@
 
 #import "MapTestViewController.h"
 #import "DetailViewController.h"
+#import "SVProgressHUD.h"
 #import <GoogleMaps/GoogleMaps.h>
 
 #define URL_STRING @"http://172.30.254.141:8000/"
@@ -29,6 +30,7 @@
 
 - (void)viewDidLoad
 {
+    
     [super viewDidLoad];
     locationManager = [[CLLocationManager alloc] init];
     
@@ -71,7 +73,7 @@
 
         for(NSDictionary *spot in results){
             GMSMarker *marker = [[GMSMarker alloc] init];
-            marker.position = CLLocationCoordinate2DMake([spot[@"place_lati"] doubleValue], [spot[@"place_long"] doubleValue]);
+            marker.position = CLLocationCoordinate2DMake([spot[@"place_lati"] doubleValue],[spot[@"place_long"] doubleValue]);
             marker.title = spot[@"title"];
             marker.snippet = spot[@"desc"];
             marker.userData = spot[@"_id"];
@@ -119,9 +121,11 @@
 //人気スポット
 - (void)pButton:(UIButton *)populersupotto
 {
+    [SVProgressHUD showWithStatus:@"取得中"maskType:SVProgressHUDMaskTypeBlack];
     UIViewController *viewControlle = [self.storyboard instantiateViewControllerWithIdentifier:@"spotRanking"];
     
     [self presentViewController:viewControlle animated:YES completion:nil];
+    [SVProgressHUD dismiss];
 }
 
 - (void)didReceiveMemoryWarning
@@ -153,6 +157,7 @@
 }
 
 - (void)mapView:(GMSMapView *)mapView didTapInfoWindowOfMarker:(GMSMarker* )marker{
+   [SVProgressHUD showWithStatus:@"通信中" maskType:SVProgressHUDMaskTypeBlack];
     argument = marker.userData;
     NSLog(@"Jump to %@", argument);
     //UIViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"spotDetailFromMap"];
@@ -164,7 +169,9 @@
     detailViewController.argument = [[NSString alloc] initWithString:argument];//argument;
     NSLog(@"prepare\n%@", argument);
     
-    [self presentViewController:detailViewController animated:YES completion:nil];
+    [self presentViewController:detailViewController animated:YES completion:^(void){
+        [SVProgressHUD dismiss];
+    }];
 }
 
 @end
