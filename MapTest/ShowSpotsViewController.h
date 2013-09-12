@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+#define CATEGORY_OMO (0)
+#define CATEGORY_MOE (1)
+#define CATEGORY_TIN (2)
+
 @interface ShowSpotsViewController : UITableViewController
 
 @end

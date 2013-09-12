@@ -11,11 +11,7 @@
 #import "SVProgressHUD.h"
 #import <GoogleMaps/GoogleMaps.h>
 
-#define URL_STRING @"http://172.30.254.141:8000/"
-//#define URL_STRING @"http://192.168.11.2:8000/"
-//#define URL_STRING @"http://ec2-54-250-229-175.ap-northeast-1.compute.amazonaws.com:8000/"
-
-@interface MapTestViewController ()<GMSMapViewDelegate>{
+@interface MapTestViewController ()<GMSMapViewDelegate, UITabBarControllerDelegate>{
     
 }
 
@@ -62,7 +58,7 @@
                              requestWithURL:url];
     NSURLResponse* response = nil;
     NSError* error = nil;
-    NSData* data = [NSURLConnection
+    data = [NSURLConnection
                     sendSynchronousRequest:request
                     returningResponse:&response
                     error:&error];
@@ -81,23 +77,12 @@
             [markerDictionary setObject:spot[@"title"] forKey:marker];
         }
     }
-	
-    //ボタン（スポット追加）
-    UIButton *addSpotButton =
-    [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    addSpotButton.frame =CGRectMake(10, 10, 100, 30);
-    addSpotButton.center = CGPointMake(50, 400);
-    [addSpotButton setTitle:@"スポット追加" forState:UIControlStateNormal];
-    [addSpotButton addTarget:self action:@selector(buttonPush:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:addSpotButton];
     
-    //人気スポット
-    UIButton *populerSpotButton =[UIButton buttonWithType:UIButtonTypeRoundedRect];
-    populerSpotButton.frame = CGRectMake(10, 10, 100, 30);
-    populerSpotButton.center = CGPointMake(269, 400);
-    [populerSpotButton setTitle:@"人気スポット" forState:UIControlStateNormal];
-    [populerSpotButton addTarget:self action:@selector(pButton:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:populerSpotButton];
+    toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44 )];
+    // ツールバーを親Viewに追加
+    [self.view addSubview:toolBar];
+    
+    [self changeButtons:YES];
     
     if([CLLocationManager locationServicesEnabled]){
         locationManager.delegate = self;
@@ -105,21 +90,135 @@
     }else{
         NSLog(@"Location services not avaiable");
     }
-    
-    
-
 }
 
-//スポット追加
-- (void)buttonPush:(UIButton *)addsupotto
+- (void)changeButtons:(BOOL)inFlag{
+        NSArray * newButtonArray = nil;
+        
+        if(inFlag == YES)
+        {
+            // ボタン群のAパターンを作成する
+            UIBarButtonItem * btn0 = [[UIBarButtonItem alloc] initWithTitle:@"切替" style:UIBarButtonItemStyleBordered target:self action:@selector(onTapChangeA:)];
+            UIBarButtonItem * btn1 = [[UIBarButtonItem alloc] initWithTitle:@"おも" style:UIBarButtonItemStyleBordered target:self action:@selector( onFilterOmo:)];
+            UIBarButtonItem * btn2 = [[UIBarButtonItem alloc] initWithTitle:@"もえ" style:UIBarButtonItemStyleBordered target:self action:@selector( onFilterMoe:)];
+            UIBarButtonItem * btn3 = [[UIBarButtonItem alloc] initWithTitle:@"ちん" style:UIBarButtonItemStyleBordered target:self action:@selector( onFilterTin:)];
+            UIBarButtonItem * btn4 = [[UIBarButtonItem alloc] initWithTitle:@"ぜん" style:UIBarButtonItemStyleBordered target:self action:@selector( onNoFilter:)];
+            newButtonArray = [ NSArray arrayWithObjects:btn0, btn1, btn2, btn3, btn4, nil ];
+        }
+        else
+        {
+            // ボタン群のBパターンを作成する
+            UIBarButtonItem * btn0 = [[UIBarButtonItem alloc] initWithTitle:@"切替" style:UIBarButtonItemStyleBordered target:self action:@selector( onTapChangeB:)];
+            UIBarButtonItem * btn1 = [[UIBarButtonItem alloc] initWithTitle:@"かめら" style:UIBarButtonItemStyleBordered target:self action:@selector( addSpotButton:)];
+            UIBarButtonItem * btn2 = [[UIBarButtonItem alloc] initWithTitle:@"にんき" style:UIBarButtonItemStyleBordered target:self action:@selector( showSpotsButton:)];
+            
+            newButtonArray = [ NSArray arrayWithObjects:btn0, btn1, btn2, nil ];
+        }
+        // アニメーション付きでボタンを切り替える
+        [toolBar setItems:newButtonArray animated:YES ];
+        return;
+}
+
+- (void)onTapChangeA:(id)inSender
 {
-    UIViewController *viewControlle = [self.storyboard instantiateViewControllerWithIdentifier:@"callFromSampleMap"];
+    [self changeButtons:NO];
+    return;
+}
+
+- (void)onTapChangeB:(id)inSender
+{
+    [self changeButtons:YES];
+    return;
+}
+
+-(void)onNoFilter:(id)inSender{
+    [self makeMarker:CATEGORY_ZEN];
+}
+
+-(void)onFilterOmo:(id)inSender{
+    [self makeMarker:CATEGORY_OMO];
+}
+
+-(void)onFilterMoe:(id)inSender{
+    [self makeMarker:CATEGORY_MOE];
+}
+
+-(void)onFilterTin:(id)inSender{
+    [self makeMarker:CATEGORY_TIN];
+}
+
+-(void)makeMarker:(int)category{
+    [mapView_ clear];
+    NSArray *results = [self parseJson:data];
+    markerDictionary = [NSMutableDictionary dictionaryWithCapacity:[results count]];
     
-    [self presentViewController:viewControlle animated:YES completion:nil];
+    switch (category) {
+        case CATEGORY_OMO:
+            for(NSDictionary *spot in results){
+                if([spot[@"category"] intValue] == CATEGORY_OMO) {
+                    GMSMarker *marker = [[GMSMarker alloc] init];
+                    marker.position = CLLocationCoordinate2DMake([spot[@"place_lati"] doubleValue], [spot[@"place_long"] doubleValue]);
+                    marker.title = spot[@"title"];
+                    marker.snippet = spot[@"desc"];
+                    marker.userData = spot[@"_id"];
+                    marker.map = mapView_;
+                    [markerDictionary setObject:spot[@"title"] forKey:marker];
+                }
+            }
+            break;
+            
+        case CATEGORY_MOE:
+            for(NSDictionary *spot in results){
+                if([spot[@"category"] intValue] == CATEGORY_MOE) {
+                    GMSMarker *marker = [[GMSMarker alloc] init];
+                    marker.position = CLLocationCoordinate2DMake([spot[@"place_lati"] doubleValue], [spot[@"place_long"] doubleValue]);
+                    marker.title = spot[@"title"];
+                    marker.snippet = spot[@"desc"];
+                    marker.userData = spot[@"_id"];
+                    marker.map = mapView_;
+                    [markerDictionary setObject:spot[@"title"] forKey:marker];
+                }
+            }
+            break;
+            
+        case CATEGORY_TIN:
+            for(NSDictionary *spot in results){
+                if([spot[@"category"] intValue] == CATEGORY_TIN) {
+                    GMSMarker *marker = [[GMSMarker alloc] init];
+                    marker.position = CLLocationCoordinate2DMake([spot[@"place_lati"] doubleValue], [spot[@"place_long"] doubleValue]);
+                    marker.title = spot[@"title"];
+                    marker.snippet = spot[@"desc"];
+                    marker.userData = spot[@"_id"];
+                    marker.map = mapView_;
+                    [markerDictionary setObject:spot[@"title"] forKey:marker];
+                }
+            }
+            break;
+        default:
+            for(NSDictionary *spot in results){
+                GMSMarker *marker = [[GMSMarker alloc] init];
+                marker.position = CLLocationCoordinate2DMake([spot[@"place_lati"] doubleValue], [spot[@"place_long"] doubleValue]);
+                marker.title = spot[@"title"];
+                marker.snippet = spot[@"desc"];
+                marker.userData = spot[@"_id"];
+                marker.map = mapView_;
+                [markerDictionary setObject:spot[@"title"] forKey:marker];
+        }
+        break;
+    }
+}
+
+
+//スポット追加
+- (void)addSpotButton:(UIButton *)addsupotto
+{
+    UIViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"callFromSampleMap"];
+    
+    [self presentViewController:viewController animated:YES completion:nil];
 }
 
 //人気スポット
-- (void)pButton:(UIButton *)populersupotto
+- (void)showSpotsButton:(UIButton *)populersupotto
 {
     [SVProgressHUD showWithStatus:@"取得中"maskType:SVProgressHUDMaskTypeBlack];
     UIViewController *viewControlle = [self.storyboard instantiateViewControllerWithIdentifier:@"spotRanking"];
@@ -160,12 +259,9 @@
    [SVProgressHUD showWithStatus:@"通信中" maskType:SVProgressHUDMaskTypeBlack];
     argument = marker.userData;
     NSLog(@"Jump to %@", argument);
-    //UIViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"spotDetailFromMap"];
-    
+        
     DetailViewController *detailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"spotDetailFromMap"];
     
-    //DetailViewController *detailViewController = [[DetailViewController alloc]initWithNibName:@"DetailViewController" bundle:nil];
-    // 渡したい値を設定
     detailViewController.argument = [[NSString alloc] initWithString:argument];//argument;
     NSLog(@"prepare\n%@", argument);
     
