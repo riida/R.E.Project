@@ -382,11 +382,13 @@
         <class className="createSpotViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/createSpotViewController.h"/>
             <relationships>
+                <relationship kind="action" name="segChanged:"/>
                 <relationship kind="action" name="sendDataToServer:"/>
                 <relationship kind="action" name="startCamera:"/>
                 <relationship kind="outlet" name="cameraButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="descTF" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="pictureImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="sc" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
                 <relationship kind="outlet" name="sendButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="titleTF" candidateClass="UITextField"/>
