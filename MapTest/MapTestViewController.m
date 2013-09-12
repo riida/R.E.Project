@@ -167,17 +167,4 @@
     [self presentViewController:detailViewController animated:YES completion:nil];
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    //2つ目の画面にパラメータを渡して遷移する
-    
-    NSLog(@"segue identifier: %@", segue.identifier);
-    
-    if ([segue.identifier isEqualToString:@"spotDetail"]) {
-        //ここでパラメータを渡す
-        DetailViewController *detailViewController = segue.destinationViewController;
-        detailViewController.argument = argument;
-        NSLog(@"pre\n%@", argument);
-    }
-}
-
 @end
