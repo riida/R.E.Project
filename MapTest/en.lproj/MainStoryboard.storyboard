@@ -102,23 +102,39 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" momentary="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s9V-Tr-MmZ">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="161" id="uWd-Ru-HIj"/>
+                                        </constraints>
+                                        <segments>
+                                            <segment title="おも"/>
+                                            <segment title="もえ"/>
+                                            <segment title="ちん"/>
+                                        </segments>
+                                        <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="segChanged:" destination="Nli-cM-FFg" eventType="valueChanged" id="9Of-en-pdp"/>
+                                        </connections>
+                                    </segmentedControl>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="l9z-dv-bhB" firstAttribute="leading" secondItem="gD3-OL-lmQ" secondAttribute="leading" constant="228" id="2BR-Iu-tDS"/>
                                     <constraint firstItem="8rU-DS-XAB" firstAttribute="top" secondItem="bHM-Iw-dDf" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="2WB-gW-w2Q"/>
+                                    <constraint firstItem="l9z-dv-bhB" firstAttribute="leading" secondItem="gD3-OL-lmQ" secondAttribute="leading" constant="232" id="5cP-18-hBi"/>
                                     <constraint firstItem="bHM-Iw-dDf" firstAttribute="top" secondItem="gD3-OL-lmQ" secondAttribute="top" constant="212" id="9JQ-pK-R9W"/>
                                     <constraint firstItem="x37-4e-4J3" firstAttribute="top" secondItem="gD3-OL-lmQ" secondAttribute="top" constant="294" id="AJL-fl-e6f"/>
                                     <constraint firstItem="ecz-ZA-RLL" firstAttribute="leading" secondItem="gD3-OL-lmQ" secondAttribute="leading" constant="27" id="BKg-U7-9Gz"/>
-                                    <constraint firstItem="ecz-ZA-RLL" firstAttribute="centerX" secondItem="8rU-DS-XAB" secondAttribute="centerX" type="default" id="HSK-dq-Gqt"/>
-                                    <constraint firstItem="bHM-Iw-dDf" firstAttribute="centerX" secondItem="8rU-DS-XAB" secondAttribute="centerX" type="default" id="Kh3-SK-gn3"/>
-                                    <constraint firstAttribute="bottom" secondItem="TTA-H5-tiG" secondAttribute="bottom" constant="6" id="NHp-Ax-tM3"/>
-                                    <constraint firstItem="bHM-Iw-dDf" firstAttribute="centerX" secondItem="fOd-S2-iFd" secondAttribute="centerX" type="default" id="QmV-7i-E4c"/>
+                                    <constraint firstAttribute="trailing" secondItem="ecz-ZA-RLL" secondAttribute="trailing" constant="37" id="NRl-88-ylS"/>
+                                    <constraint firstItem="ecz-ZA-RLL" firstAttribute="centerX" secondItem="fOd-S2-iFd" secondAttribute="centerX" type="default" id="Oay-Ge-eLh"/>
+                                    <constraint firstItem="x37-4e-4J3" firstAttribute="leading" secondItem="gD3-OL-lmQ" secondAttribute="leading" constant="151" id="PvX-uh-aZR"/>
                                     <constraint firstItem="ecz-ZA-RLL" firstAttribute="top" secondItem="x37-4e-4J3" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Rgk-K0-V55"/>
-                                    <constraint firstItem="TTA-H5-tiG" firstAttribute="top" secondItem="gD3-OL-lmQ" secondAttribute="top" constant="367" id="YCW-za-t9p"/>
-                                    <constraint firstItem="TTA-H5-tiG" firstAttribute="leading" secondItem="gD3-OL-lmQ" secondAttribute="leading" constant="37" id="gSX-dx-E4I"/>
+                                    <constraint firstItem="bHM-Iw-dDf" firstAttribute="centerX" secondItem="8rU-DS-XAB" secondAttribute="centerX" type="default" id="Rl8-7d-Pya"/>
+                                    <constraint firstItem="s9V-Tr-MmZ" firstAttribute="leading" secondItem="8rU-DS-XAB" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="So9-fG-nNq"/>
+                                    <constraint firstItem="TTA-H5-tiG" firstAttribute="top" secondItem="ecz-ZA-RLL" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="VFg-0e-nON"/>
+                                    <constraint firstItem="8rU-DS-XAB" firstAttribute="top" secondItem="s9V-Tr-MmZ" secondAttribute="top" type="default" id="WyK-ea-qCa"/>
+                                    <constraint firstAttribute="bottom" secondItem="TTA-H5-tiG" secondAttribute="bottom" constant="12" id="YAE-iQ-o1L"/>
                                     <constraint firstItem="x37-4e-4J3" firstAttribute="centerX" secondItem="gD3-OL-lmQ" secondAttribute="centerX" type="default" id="hOE-m6-sDl"/>
-                                    <constraint firstItem="x37-4e-4J3" firstAttribute="leading" secondItem="gD3-OL-lmQ" secondAttribute="leading" constant="151" id="iiR-gt-HJ9"/>
-                                    <constraint firstAttribute="trailing" secondItem="ecz-ZA-RLL" secondAttribute="trailing" constant="37" id="jct-ex-xKd"/>
+                                    <constraint firstItem="8rU-DS-XAB" firstAttribute="leading" secondItem="gD3-OL-lmQ" secondAttribute="leading" constant="37" id="myB-ls-bce"/>
+                                    <constraint firstItem="TTA-H5-tiG" firstAttribute="leading" secondItem="8rU-DS-XAB" secondAttribute="leading" type="default" id="nlw-6W-yKo"/>
                                     <constraint firstItem="TTA-H5-tiG" firstAttribute="baseline" secondItem="l9z-dv-bhB" secondAttribute="baseline" type="default" id="unS-Iv-FKw"/>
                                     <constraint firstItem="fOd-S2-iFd" firstAttribute="top" secondItem="gD3-OL-lmQ" secondAttribute="top" constant="20" symbolic="YES" type="default" id="vmk-R0-99W"/>
                                 </constraints>
@@ -151,6 +167,7 @@
                         <outlet property="cameraButton" destination="TTA-H5-tiG" id="Mho-oC-ajv"/>
                         <outlet property="descTF" destination="ecz-ZA-RLL" id="4K8-Bi-2eR"/>
                         <outlet property="pictureImage" destination="fOd-S2-iFd" id="JQp-zB-0Rx"/>
+                        <outlet property="sc" destination="s9V-Tr-MmZ" id="b1E-4k-tnK"/>
                         <outlet property="scrollView" destination="gD3-OL-lmQ" id="oIX-XT-8p9"/>
                         <outlet property="sendButton" destination="l9z-dv-bhB" id="SWg-xL-mYF"/>
                         <outlet property="titleTF" destination="8rU-DS-XAB" id="eHa-c1-Sye"/>
@@ -382,11 +399,13 @@
         <class className="createSpotViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/createSpotViewController.h"/>
             <relationships>
+                <relationship kind="action" name="segChanged:"/>
                 <relationship kind="action" name="sendDataToServer:"/>
                 <relationship kind="action" name="startCamera:"/>
                 <relationship kind="outlet" name="cameraButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="descTF" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="pictureImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="sc" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
                 <relationship kind="outlet" name="sendButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="titleTF" candidateClass="UITextField"/>
@@ -399,6 +418,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="vjE-nb-tHI"/>
+        <segue reference="0Ih-ik-GxY"/>
     </inferredMetricsTieBreakers>
 </document>

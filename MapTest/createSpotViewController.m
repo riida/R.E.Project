@@ -37,6 +37,7 @@
     _descTF.delegate = self;
     [_cameraButton setTitle:@"かめら" forState:UIControlStateNormal];
     [_sendButton setTitle:@"のこす" forState:UIControlStateNormal];
+    spotCategory = CATEGORY_OMO;
     
     [self registerForKeyboardNotifications];
     
@@ -235,4 +236,23 @@
     NSLog(@"didFailWithError");
 }
 
+- (IBAction)segChanged:(id)sender {
+    switch (_sc.selectedSegmentIndex) {
+        case CATEGORY_OMO:
+            NSLog(@"面\n");
+            spotCategory = CATEGORY_OMO;
+            break;
+            
+        case CATEGORY_MOE:
+            NSLog(@"萌\n");
+            spotCategory = CATEGORY_MOE;
+            break;
+            
+        case CATEGORY_TIN:
+            spotCategory = CATEGORY_TIN;
+            NSLog(@"珍\n");
+        default:
+            break;
+    }
+}
 @end

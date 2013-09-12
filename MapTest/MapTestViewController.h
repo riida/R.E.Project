@@ -13,8 +13,10 @@
 @interface MapTestViewController : UIViewController<CLLocationManagerDelegate,MKMapViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>{
     CLLocationManager *locationManager;
     NSString *argument;
+    UIToolbar *toolBar;
 }
 //ロケーションマネージャー
 @property(nonatomic, retain) CLLocationManager *locationManager;
+
 
 @end
