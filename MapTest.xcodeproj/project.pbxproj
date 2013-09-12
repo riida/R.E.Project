@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0414226D17DF5BDA005E12E3 /* createSpotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0414226C17DF5BDA005E12E3 /* createSpotViewController.m */; };
+		042346D917E1F17F00AFAC84 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 042346D817E1F17F00AFAC84 /* icon.png */; };
 		04E18E5F17E1C2A0008CC6CD /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 04E18E5C17E1C2A0008CC6CD /* SVProgressHUD.bundle */; };
 		04E18E6017E1C2A0008CC6CD /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E18E5E17E1C2A0008CC6CD /* SVProgressHUD.m */; };
 		B1BB544F17D868360005663B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1BB544E17D868360005663B /* UIKit.framework */; };
@@ -43,6 +44,7 @@
 /* Begin PBXFileReference section */
 		0414226B17DF5BDA005E12E3 /* createSpotViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = createSpotViewController.h; sourceTree = "<group>"; };
 		0414226C17DF5BDA005E12E3 /* createSpotViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = createSpotViewController.m; sourceTree = "<group>"; };
+		042346D817E1F17F00AFAC84 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		04E18E5C17E1C2A0008CC6CD /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
 		04E18E5D17E1C2A0008CC6CD /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		04E18E5E17E1C2A0008CC6CD /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 		B1BB544217D868360005663B = {
 			isa = PBXGroup;
 			children = (
+				042346D817E1F17F00AFAC84 /* icon.png */,
 				04E18E5B17E1C2A0008CC6CD /* SVProgressHUD */,
 				B1BB545417D868360005663B /* MapTest */,
 				B1BB544D17D868360005663B /* Frameworks */,
@@ -257,6 +260,7 @@
 				B1BB546817D868360005663B /* MainStoryboard.storyboard in Resources */,
 				B1BB547417D8693B0005663B /* GoogleMaps.bundle in Resources */,
 				04E18E5F17E1C2A0008CC6CD /* SVProgressHUD.bundle in Resources */,
+				042346D917E1F17F00AFAC84 /* icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
