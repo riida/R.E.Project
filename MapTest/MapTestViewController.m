@@ -123,18 +123,18 @@
         if(inFlag == YES)
         {
             // ボタン群のAパターンを作成する
-            UIBarButtonItem * btn0 = [[UIBarButtonItem alloc] initWithTitle:@"切替" style:UIBarButtonItemStyleBordered target:self action:@selector(onTapChangeA:)];
+            UIBarButtonItem * btn0 = [[UIBarButtonItem alloc] initWithTitle:@"フィルタ" style:UIBarButtonItemStyleBordered target:self action:@selector(onTapChangeA:)];
             UIBarButtonItem * btn1 = [[UIBarButtonItem alloc] initWithTitle:@"おも" style:UIBarButtonItemStyleBordered target:self action:@selector( onFilterOmo:)];
-            UIBarButtonItem * btn2 = [[UIBarButtonItem alloc] initWithTitle:@"もえ" style:UIBarButtonItemStyleBordered target:self action:@selector( onFilterMoe:)];
-            UIBarButtonItem * btn3 = [[UIBarButtonItem alloc] initWithTitle:@"ちん" style:UIBarButtonItemStyleBordered target:self action:@selector( onFilterTin:)];
-            UIBarButtonItem * btn4 = [[UIBarButtonItem alloc] initWithTitle:@"ぜん" style:UIBarButtonItemStyleBordered target:self action:@selector( onNoFilter:)];
+            UIBarButtonItem * btn2 = [[UIBarButtonItem alloc] initWithTitle:@"萌" style:UIBarButtonItemStyleBordered target:self action:@selector( onFilterMoe:)];
+            UIBarButtonItem * btn3 = [[UIBarButtonItem alloc] initWithTitle:@"珍" style:UIBarButtonItemStyleBordered target:self action:@selector( onFilterTin:)];
+            UIBarButtonItem * btn4 = [[UIBarButtonItem alloc] initWithTitle:@"全" style:UIBarButtonItemStyleBordered target:self action:@selector( onNoFilter:)];
             newButtonArray = [ NSArray arrayWithObjects:btn0, btn1, btn2, btn3, btn4, nil ];
         }
         else
         {
             // ボタン群のBパターンを作成する
-            UIBarButtonItem * btn0 = [[UIBarButtonItem alloc] initWithTitle:@"切替" style:UIBarButtonItemStyleBordered target:self action:@selector( onTapChangeB:)];
-            UIBarButtonItem * btn1 = [[UIBarButtonItem alloc] initWithTitle:@"かめら" style:UIBarButtonItemStyleBordered target:self action:@selector( addSpotButton:)];
+            UIBarButtonItem * btn0 = [[UIBarButtonItem alloc] initWithTitle:@"機能" style:UIBarButtonItemStyleBordered target:self action:@selector( onTapChangeB:)];
+            UIBarButtonItem * btn1 = [[UIBarButtonItem alloc] initWithTitle:@"とうろく" style:UIBarButtonItemStyleBordered target:self action:@selector( addSpotButton:)];
             UIBarButtonItem * btn2 = [[UIBarButtonItem alloc] initWithTitle:@"にんき" style:UIBarButtonItemStyleBordered target:self action:@selector( showSpotsButton:)];
             
             newButtonArray = [ NSArray arrayWithObjects:btn0, btn1, btn2, nil ];

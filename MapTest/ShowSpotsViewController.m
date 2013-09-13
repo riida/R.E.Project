@@ -9,10 +9,6 @@
 #import "ShowSpotsViewController.h"
 #import "SpotDetailViewController.h"
 
-//#define URL_STRING @"http://172.30.254.141:8000/"
-#define URL_STRING @"http://192.168.11.2:8000/"
-//#define URL_STRING @"http://ec2-54-250-229-175.ap-northeast-1.compute.amazonaws.com:8000/"
-
 @interface ShowSpotsViewController () {
     NSArray *results;
 }
@@ -83,13 +79,12 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"%@", results);
+    
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     cell.textLabel.text = [[results objectAtIndex:indexPath.row] objectForKey:@"title"];
-    NSString *value = [[[results objectAtIndex:indexPath.row] objectForKey:@"value"] stringByAppendingString:@" ぐっど！"];
-    cell.detailTextLabel.text = value;
+    cell.detailTextLabel.text = [[results objectAtIndex:indexPath.row] objectForKey:@"desc"];;
     UIImage *MK = [UIImage imageNamed:@"blue"];
     UIImage *newMK = [self resizeImage:MK rect:CGRectMake(0,0,50,50)];
     cell.imageView.image = newMK;
@@ -99,7 +94,7 @@
 }
 
 /*
-// Override to support conditional editing of the table view.
+// Override to support conditional editing of the table view.de
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.

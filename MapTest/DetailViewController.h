@@ -12,9 +12,7 @@
 #define CATEGORY_MOE (1)
 #define CATEGORY_TIN (2)
 
-@interface DetailViewController : UIViewController {
-    //NSString *argument;
-}
+@interface DetailViewController : UIViewController
 
 @property (strong, nonatomic)NSString *argument;
 @property (weak, nonatomic) IBOutlet UILabel *spotLabel;
