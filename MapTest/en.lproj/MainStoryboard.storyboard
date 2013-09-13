@@ -7,7 +7,7 @@
         <!--Map Test View Controller-->
         <scene sceneID="5">
             <objects>
-                <viewController id="2" customClass="MapTestViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapView" id="2" customClass="MapTestViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -39,38 +39,6 @@
                                             <constraint firstAttribute="width" constant="176" id="Q1h-cz-1Yh"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TTA-H5-tiG">
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="77" id="8Tl-Vg-WcZ"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" title="かめら">
-                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="highlighted">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="startCamera:" destination="Nli-cM-FFg" eventType="touchUpInside" id="Wxj-bd-8V4"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l9z-dv-bhB">
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="60" id="Jm3-pW-SM9"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" title="のこす">
-                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="highlighted">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="sendDataToServer:" destination="Nli-cM-FFg" eventType="touchUpInside" id="aIe-ty-45k"/>
-                                        </connections>
-                                    </button>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="タイトル" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bHM-Iw-dDf">
                                         <constraints>
                                             <constraint firstAttribute="width" constant="73" id="Am6-Ae-XOH"/>
@@ -102,30 +70,61 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="v0w-iP-BXa">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="161" id="48q-5m-Dsg"/>
+                                        </constraints>
+                                        <segments>
+                                            <segment title="おも"/>
+                                            <segment title="萌"/>
+                                            <segment title="珍"/>
+                                        </segments>
+                                        <color key="tintColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="segChanged:" destination="Nli-cM-FFg" eventType="valueChanged" id="bgo-z9-bMB"/>
+                                        </connections>
+                                    </segmentedControl>
+                                    <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bqh-8Z-nLs">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="344" id="YAP-Fg-Bii"/>
+                                        </constraints>
+                                        <items>
+                                            <barButtonItem title="かめら" id="JG0-2a-FSQ">
+                                                <connections>
+                                                    <action selector="execCamera:" destination="Nli-cM-FFg" id="xzA-aT-W6K"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem title="のこす" id="8pg-HW-Mu7">
+                                                <connections>
+                                                    <action selector="registerSpot:" destination="Nli-cM-FFg" id="max-9l-n2d"/>
+                                                </connections>
+                                            </barButtonItem>
+                                        </items>
+                                    </toolbar>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="l9z-dv-bhB" firstAttribute="leading" secondItem="gD3-OL-lmQ" secondAttribute="leading" constant="228" id="2BR-Iu-tDS"/>
                                     <constraint firstItem="8rU-DS-XAB" firstAttribute="top" secondItem="bHM-Iw-dDf" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="2WB-gW-w2Q"/>
-                                    <constraint firstItem="fOd-S2-iFd" firstAttribute="centerX" secondItem="bHM-Iw-dDf" secondAttribute="centerX" type="default" id="3u9-EQ-jv0"/>
-                                    <constraint firstItem="bHM-Iw-dDf" firstAttribute="top" secondItem="gD3-OL-lmQ" secondAttribute="top" constant="212" id="9JQ-pK-R9W"/>
                                     <constraint firstItem="x37-4e-4J3" firstAttribute="top" secondItem="gD3-OL-lmQ" secondAttribute="top" constant="294" id="AJL-fl-e6f"/>
-                                    <constraint firstItem="ecz-ZA-RLL" firstAttribute="leading" secondItem="gD3-OL-lmQ" secondAttribute="leading" constant="27" id="BKg-U7-9Gz"/>
-                                    <constraint firstItem="ecz-ZA-RLL" firstAttribute="centerX" secondItem="8rU-DS-XAB" secondAttribute="centerX" type="default" id="HSK-dq-Gqt"/>
-                                    <constraint firstItem="bHM-Iw-dDf" firstAttribute="centerX" secondItem="8rU-DS-XAB" secondAttribute="centerX" type="default" id="Kh3-SK-gn3"/>
-                                    <constraint firstAttribute="bottom" secondItem="TTA-H5-tiG" secondAttribute="bottom" constant="6" id="NHp-Ax-tM3"/>
+                                    <constraint firstItem="Bqh-8Z-nLs" firstAttribute="trailing" secondItem="gD3-OL-lmQ" secondAttribute="trailing" type="default" id="Fd6-xR-pqU"/>
+                                    <constraint firstItem="bHM-Iw-dDf" firstAttribute="top" secondItem="gD3-OL-lmQ" secondAttribute="top" constant="214" id="Gs5-uT-m3z"/>
+                                    <constraint firstItem="bHM-Iw-dDf" firstAttribute="leading" secondItem="gD3-OL-lmQ" secondAttribute="leading" constant="41" id="Ks2-q7-cU3"/>
                                     <constraint firstItem="ecz-ZA-RLL" firstAttribute="top" secondItem="x37-4e-4J3" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Rgk-K0-V55"/>
-                                    <constraint firstItem="TTA-H5-tiG" firstAttribute="top" secondItem="gD3-OL-lmQ" secondAttribute="top" constant="367" id="YCW-za-t9p"/>
-                                    <constraint firstItem="TTA-H5-tiG" firstAttribute="leading" secondItem="gD3-OL-lmQ" secondAttribute="leading" constant="37" id="gSX-dx-E4I"/>
-                                    <constraint firstItem="x37-4e-4J3" firstAttribute="centerX" secondItem="gD3-OL-lmQ" secondAttribute="centerX" type="default" id="hOE-m6-sDl"/>
-                                    <constraint firstItem="x37-4e-4J3" firstAttribute="leading" secondItem="gD3-OL-lmQ" secondAttribute="leading" constant="151" id="iiR-gt-HJ9"/>
-                                    <constraint firstAttribute="trailing" secondItem="ecz-ZA-RLL" secondAttribute="trailing" constant="37" id="jct-ex-xKd"/>
-                                    <constraint firstItem="TTA-H5-tiG" firstAttribute="baseline" secondItem="l9z-dv-bhB" secondAttribute="baseline" type="default" id="unS-Iv-FKw"/>
+                                    <constraint firstItem="fOd-S2-iFd" firstAttribute="centerX" secondItem="ecz-ZA-RLL" secondAttribute="centerX" type="default" id="T1P-nJ-aVv"/>
+                                    <constraint firstItem="Bqh-8Z-nLs" firstAttribute="top" secondItem="gD3-OL-lmQ" secondAttribute="top" constant="372" id="X79-4S-kda"/>
+                                    <constraint firstItem="x37-4e-4J3" firstAttribute="centerX" secondItem="gD3-OL-lmQ" secondAttribute="centerX" type="default" id="YUL-hO-tVL"/>
+                                    <constraint firstItem="8rU-DS-XAB" firstAttribute="leading" secondItem="gD3-OL-lmQ" secondAttribute="leading" constant="27" id="cku-Jm-cPh"/>
+                                    <constraint firstItem="v0w-iP-BXa" firstAttribute="leading" secondItem="x37-4e-4J3" secondAttribute="leading" type="default" id="cp1-Nr-55K"/>
+                                    <constraint firstItem="v0w-iP-BXa" firstAttribute="baseline" secondItem="8rU-DS-XAB" secondAttribute="baseline" type="default" id="hMG-bq-TZI"/>
+                                    <constraint firstItem="Bqh-8Z-nLs" firstAttribute="bottom" secondItem="gD3-OL-lmQ" secondAttribute="bottom" type="default" id="ibx-MG-RSN"/>
+                                    <constraint firstItem="ecz-ZA-RLL" firstAttribute="leading" secondItem="8rU-DS-XAB" secondAttribute="leading" type="default" id="lJy-7d-6Fi"/>
+                                    <constraint firstItem="Bqh-8Z-nLs" firstAttribute="centerX" secondItem="x37-4e-4J3" secondAttribute="centerX" type="default" id="rAd-Gh-hVB"/>
+                                    <constraint firstItem="Bqh-8Z-nLs" firstAttribute="leading" secondItem="gD3-OL-lmQ" secondAttribute="leading" type="default" id="rxL-rV-JIW"/>
                                     <constraint firstItem="fOd-S2-iFd" firstAttribute="top" secondItem="gD3-OL-lmQ" secondAttribute="top" constant="20" symbolic="YES" type="default" id="vmk-R0-99W"/>
                                 </constraints>
                             </scrollView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GqO-T5-EkI">
                                 <items>
-                                    <navigationItem title="スポットを残しましょ" id="jq1-kd-6CJ">
+                                    <navigationItem title="スポットを残そう" id="jq1-kd-6CJ">
                                         <barButtonItem key="leftBarButtonItem" title="地図へ" id="2VH-Pr-lN9">
                                             <connections>
                                                 <segue destination="2" kind="modal" id="0Ih-ik-GxY"/>
@@ -148,11 +147,10 @@
                     <navigationItem key="navigationItem" id="OCp-dA-d4p"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
-                        <outlet property="cameraButton" destination="TTA-H5-tiG" id="Mho-oC-ajv"/>
                         <outlet property="descTF" destination="ecz-ZA-RLL" id="4K8-Bi-2eR"/>
                         <outlet property="pictureImage" destination="fOd-S2-iFd" id="JQp-zB-0Rx"/>
+                        <outlet property="sc" destination="v0w-iP-BXa" id="e49-UR-nyT"/>
                         <outlet property="scrollView" destination="gD3-OL-lmQ" id="oIX-XT-8p9"/>
-                        <outlet property="sendButton" destination="l9z-dv-bhB" id="SWg-xL-mYF"/>
                         <outlet property="titleTF" destination="8rU-DS-XAB" id="eHa-c1-Sye"/>
                     </connections>
                 </viewController>
@@ -208,20 +206,28 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vOz-jl-ASk">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="GcV-QH-AbT" secondAttribute="bottom" constant="61" id="2b9-Ts-5Q8"/>
+                            <constraint firstAttribute="bottom" secondItem="GcV-QH-AbT" secondAttribute="bottom" constant="58" id="6BJ-t1-jjI"/>
+                            <constraint firstItem="vOz-jl-ASk" firstAttribute="trailing" secondItem="ejB-yL-Mb2" secondAttribute="trailing" type="default" id="7Xl-eV-pF1"/>
+                            <constraint firstItem="GcV-QH-AbT" firstAttribute="leading" secondItem="faf-tq-ARe" secondAttribute="leading" constant="48" id="97x-w4-kEv"/>
                             <constraint firstItem="Xe4-fD-dTn" firstAttribute="centerX" secondItem="qc6-aJ-AGd" secondAttribute="centerX" type="default" id="D6g-gP-MAh"/>
-                            <constraint firstItem="GcV-QH-AbT" firstAttribute="leading" secondItem="faf-tq-ARe" secondAttribute="leading" constant="63" id="DL5-XB-6t2"/>
                             <constraint firstItem="Xe4-fD-dTn" firstAttribute="trailing" secondItem="faf-tq-ARe" secondAttribute="trailing" type="default" id="N93-l6-q0a"/>
                             <constraint firstItem="Xe4-fD-dTn" firstAttribute="leading" secondItem="faf-tq-ARe" secondAttribute="leading" type="default" id="Qrt-xc-0QE"/>
                             <constraint firstItem="Xe4-fD-dTn" firstAttribute="top" secondItem="faf-tq-ARe" secondAttribute="top" type="default" id="SMg-bK-Cxe"/>
-                            <constraint firstAttribute="bottom" secondItem="ZL3-Sj-Ruk" secondAttribute="bottom" constant="132" id="W1b-kB-gif"/>
+                            <constraint firstAttribute="bottom" secondItem="ZL3-Sj-Ruk" secondAttribute="bottom" constant="132" id="ZQA-L1-GTt"/>
                             <constraint firstItem="ZL3-Sj-Ruk" firstAttribute="centerX" secondItem="ejB-yL-Mb2" secondAttribute="centerX" type="default" id="eb7-xY-U6r"/>
                             <constraint firstItem="qc6-aJ-AGd" firstAttribute="top" secondItem="faf-tq-ARe" secondAttribute="top" constant="77" id="lxB-6r-gnt"/>
                             <constraint firstItem="ejB-yL-Mb2" firstAttribute="top" secondItem="faf-tq-ARe" secondAttribute="top" constant="120" id="nl5-Uv-0RV"/>
+                            <constraint firstAttribute="bottom" secondItem="vOz-jl-ASk" secondAttribute="bottom" constant="70" id="s6w-Ds-Vda"/>
                             <constraint firstItem="ZL3-Sj-Ruk" firstAttribute="leading" secondItem="qc6-aJ-AGd" secondAttribute="leading" type="default" id="xAq-bS-ucr"/>
+                            <constraint firstItem="vOz-jl-ASk" firstAttribute="baseline" secondItem="GcV-QH-AbT" secondAttribute="baseline" type="default" id="xYd-SN-UGo"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
@@ -229,6 +235,7 @@
                         <outlet property="spotDesc" destination="ZL3-Sj-Ruk" id="hAU-k5-re7"/>
                         <outlet property="spotLabel" destination="qc6-aJ-AGd" id="GJ5-L6-x8l"/>
                         <outlet property="spotPicture" destination="ejB-yL-Mb2" id="5Tz-7r-f1v"/>
+                        <outlet property="valueLabel" destination="vOz-jl-ASk" id="YKd-9b-oVQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vxW-Mc-PhH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -351,6 +358,53 @@
             <point key="canvasLocation" x="-235" y="-455"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="DetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DetailViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="valueButton:"/>
+                <relationship kind="outlet" name="spotDesc" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="spotLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="spotPicture" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="valueLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="MapTestViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapTestViewController.h"/>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="ShowSpotsViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ShowSpotsViewController.h"/>
+        </class>
+        <class className="SpotDetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SpotDetailViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="descLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="spotNavi" candidateClass="UINavigationItem"/>
+                <relationship kind="outlet" name="spotPicture" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="createSpotViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/createSpotViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="execCamera:"/>
+                <relationship kind="action" name="registerSpot:"/>
+                <relationship kind="action" name="segChanged:"/>
+                <relationship kind="action" name="sendDataToServer:"/>
+                <relationship kind="action" name="startCamera:"/>
+                <relationship kind="outlet" name="cameraButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="descTF" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="pictureImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="sc" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="sendButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="titleTF" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

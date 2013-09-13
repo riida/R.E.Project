@@ -7,6 +7,7 @@
 //
 
 #import "createSpotViewController.h"
+#import "MapTestViewController.h"
 #import "SVProgressHUD.h"
 
 @interface createSpotViewController ()
@@ -33,10 +34,10 @@
 	// Do any additional setup after loading the view.
     
     
-       _titleTF.delegate = self;
+    _titleTF.delegate = self;
     _descTF.delegate = self;
-    [_cameraButton setTitle:@"かめら" forState:UIControlStateNormal];
-    [_sendButton setTitle:@"のこす" forState:UIControlStateNormal];
+    //[_cameraButton setTitle:@"かめら" forState:UIControlStateNormal];
+    //[_sendButton setTitle:@"のこす" forState:UIControlStateNormal];
 
     [SVProgressHUD showWithStatus:@"送信中"maskType:SVProgressHUDMaskTypeBlack];
     [SVProgressHUD dismiss];
@@ -55,8 +56,26 @@
     } else {
         NSLog(@"Location services not available.");
     }
-     
-   }
+    
+    if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+	{
+		UIImagePickerController *imagePickerController = [[UIImagePickerController alloc]init];
+		// カメラかライブラリからの読込指定。カメラを指定。
+		[imagePickerController setSourceType:UIImagePickerControllerSourceTypeCamera];
+		// トリミングなどを行うか否か
+		[imagePickerController setAllowsEditing:YES];
+		// Delegate
+		[imagePickerController setDelegate:self];
+		
+		// アニメーションをしてカメラUIを起動
+		[self presentViewController:imagePickerController animated:YES completion:nil];
+	}
+	else
+	{
+		NSLog(@"camera invalid.");
+	}
+    
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -94,100 +113,6 @@
                           cancelButtonTitle:@"いいえ"
                           otherButtonTitles:@"はい", nil];
     [alert show];
-    
-    NSString *root = URL_STRING;
-    NSString *urlString = [root stringByAppendingString:@"register"];
-	
-	// 画像をNSDataに変換
-	NSData *imageData = [[NSData alloc]initWithData:UIImagePNGRepresentation(self.pictureImage.image)];
-	
-	// 送信データの境界
-	NSString *boundary = @"1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	// アップロードする際のパラメーター名とファイル名
-	NSString *uploadName = @"pic";
-	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
-	[dateFormatter setDateFormat:@"yyyyMMddHHmmss"];
-	NSString *uploadFileName = [dateFormatter stringFromDate:[NSDate date]];
-	// 送信するデータ（前半）
-	NSMutableString *sendDataStringPrev = [NSMutableString stringWithString:@"--"];
-	[sendDataStringPrev appendString:boundary];
-	[sendDataStringPrev appendString:@"\r\n"];
-    //ファイルの名前は日付
-	[sendDataStringPrev appendString:[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"%@.png\"\r\n",uploadName,uploadFileName]];
-	[sendDataStringPrev appendString:@"Content-Type: image/ping\r\n\r\n"];
-	// 送信するデータ（後半）
-	NSMutableString *sendDataStringMiddle = [NSMutableString stringWithString:@"\r\n"];
-	[sendDataStringMiddle appendString:@"--"];
-	[sendDataStringMiddle appendString:boundary];
-    [sendDataStringMiddle appendString:@"\r\n"];
-    [sendDataStringMiddle appendString:@"Content-Disposition: form-data; name=\"place_lati\"; \r\n\r\n"];
-    NSString *lati = [NSString stringWithFormat:@"%f", spot_lati];
-    [sendDataStringMiddle appendString:lati];
-    [sendDataStringMiddle appendString:@"\r\n\r\n"];
-    
-    [sendDataStringMiddle appendString:@"--"];
-	[sendDataStringMiddle appendString:boundary];
-    [sendDataStringMiddle appendString:@"\r\n"];
-    [sendDataStringMiddle appendString:@"Content-Disposition: form-data; name=\"place_long\"; \r\n\r\n"];
-    NSString *longtitude = [NSString stringWithFormat:@"%f", spot_long];
-    [sendDataStringMiddle appendString:longtitude];
-    [sendDataStringMiddle appendString:@"\r\n\r\n"];
-    
-    [sendDataStringMiddle appendString:@"--"];
-	[sendDataStringMiddle appendString:boundary];
-    [sendDataStringMiddle appendString:@"\r\n"];
-    [sendDataStringMiddle appendString:@"Content-Disposition: form-data; name=\"category\"; \r\n\r\n"];
-    NSString *spotcategory = [NSString stringWithFormat:@"%d", spotCategory];
-    [sendDataStringMiddle appendString:spotcategory];
-    [sendDataStringMiddle appendString:@"\r\n\r\n"];
-	
-    [sendDataStringMiddle appendString:@"--"];
-	[sendDataStringMiddle appendString:boundary];
-    [sendDataStringMiddle appendString:@"\r\n"];
-    [sendDataStringMiddle appendString:[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"title\"; \r\n\r\n"]];
-    [sendDataStringMiddle appendString:_titleTF.text];
-    [sendDataStringMiddle appendString:@"\r\n\r\n"];
-	
-    [sendDataStringMiddle appendString:@"--"];
-	[sendDataStringMiddle appendString:boundary];
-    [sendDataStringMiddle appendString:@"\r\n"];
-    [sendDataStringMiddle appendString:[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"desc\"; \r\n\r\n"]];
-    [sendDataStringMiddle appendString:_descTF.text];
-    [sendDataStringMiddle appendString:@"\r\n"];
-	
-    NSMutableString *sendDataStringTail = [NSMutableString stringWithString:@"\r\n"];
-	[sendDataStringTail appendString:@"--"];
-	[sendDataStringTail appendString:boundary];
-    [sendDataStringTail appendString:@"--"];
-    
-	// 送信データの生成
-	NSMutableData *sendData = [NSMutableData data];
-	[sendData appendData:[sendDataStringPrev dataUsingEncoding:NSUTF8StringEncoding]];
-	[sendData appendData:imageData];
-	[sendData appendData:[sendDataStringMiddle dataUsingEncoding:NSUTF8StringEncoding]];
-	[sendData appendData:[sendDataStringTail dataUsingEncoding:NSUTF8StringEncoding]];
-	// リクエストヘッダー
-	NSDictionary *requestHeader = [NSDictionary dictionaryWithObjectsAndKeys:
-								   [NSString stringWithFormat:@"%d",[sendData length]],@"Content-Length",
-								   [NSString stringWithFormat:@"multipart/form-data;boundary=%@",boundary],@"Content-Type",nil];
-	
-	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlString]];
-	[request setAllHTTPHeaderFields:requestHeader];
-	[request setHTTPMethod:@"POST"];
-	[request setHTTPBody:sendData];
-	
-    NSURLResponse* response = nil;
-    NSError* error = nil;
-    NSData* data = [NSURLConnection
-                    sendSynchronousRequest:request
-                    returningResponse:&response
-                    error:&error];
-    
-    NSString* result = [[NSString alloc]
-                        initWithData:data
-                        encoding:NSASCIIStringEncoding];
-    NSLog(@"%@",result);
-
 }
 
 /**
@@ -197,8 +122,8 @@
 {
     switch (buttonIndex) {
         case 1:{ // はいが押されたとき
-             [SVProgressHUD showWithStatus:@"送信中"maskType:SVProgressHUDMaskTypeBlack];
-             NSLog(@"はい");
+            [SVProgressHUD showWithStatus:@"送信中"maskType:SVProgressHUDMaskTypeBlack];
+            NSLog(@"はい");
             NSString *root = URL_STRING;
             NSString *urlString = [root stringByAppendingString:@"register"];
             // 画像をNSDataに変換
@@ -240,6 +165,14 @@
             [sendDataStringMiddle appendString:@"--"];
             [sendDataStringMiddle appendString:boundary];
             [sendDataStringMiddle appendString:@"\r\n"];
+            [sendDataStringMiddle appendString:@"Content-Disposition: form-data; name=\"category\"; \r\n\r\n"];
+            NSString *category = [NSString stringWithFormat:@"%d", spotCategory];
+            [sendDataStringMiddle appendString:category];
+            [sendDataStringMiddle appendString:@"\r\n\r\n"];
+            
+            [sendDataStringMiddle appendString:@"--"];
+            [sendDataStringMiddle appendString:boundary];
+            [sendDataStringMiddle appendString:@"\r\n"];
             [sendDataStringMiddle appendString:[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"title\"; \r\n\r\n"]];
             [sendDataStringMiddle appendString:_titleTF.text];
             [sendDataStringMiddle appendString:@"\r\n\r\n"];
@@ -274,24 +207,28 @@
             
             NSURLResponse* response = nil;
             NSError* error = nil;
-            NSData* data = [NSURLConnection
-                            sendSynchronousRequest:request
-                            returningResponse:&response
-                            error:&error];
+            [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
             
-            NSString* result = [[NSString alloc]
-                                initWithData:data
-                                encoding:NSASCIIStringEncoding];
-            NSLog(@"%@",result);
-           
-        }[SVProgressHUD dismiss];
+            [SVProgressHUD dismiss];
+            
+            MapTestViewController *mapViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MapView"];
+            
+            [self presentViewController:mapViewController animated:YES completion:^(void){
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"スポット登録"
+                                                                message:@""
+                                                               delegate:self
+                                                      cancelButtonTitle:nil
+                                                      otherButtonTitles:@"OK", nil];
+                [alert show];
+            }];
+        }
+            break;
         default: // いいえが押されたとき
             NSLog(@"いいえ");
              [SVProgressHUD dismiss];
             break;
     }
 }
-
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
@@ -365,21 +302,51 @@
 - (IBAction)segChanged:(id)sender {
     switch (_sc.selectedSegmentIndex) {
         case CATEGORY_OMO:
-            NSLog(@"面\n");
             spotCategory = CATEGORY_OMO;
             break;
             
         case CATEGORY_MOE:
-            NSLog(@"萌\n");
             spotCategory = CATEGORY_MOE;
             break;
             
         case CATEGORY_TIN:
             spotCategory = CATEGORY_TIN;
-            NSLog(@"珍\n");
+        
         default:
             break;
     }
+}
+
+- (IBAction)execCamera:(id)sender {
+    if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+	{
+		UIImagePickerController *imagePickerController = [[UIImagePickerController alloc]init];
+		// カメラかライブラリからの読込指定。カメラを指定。
+		[imagePickerController setSourceType:UIImagePickerControllerSourceTypeCamera];
+		// トリミングなどを行うか否か
+		[imagePickerController setAllowsEditing:YES];
+		// Delegate
+		[imagePickerController setDelegate:self];
+		
+		// アニメーションをしてカメラUIを起動
+		[self presentViewController:imagePickerController animated:YES completion:nil];
+	}
+	else
+	{
+		NSLog(@"camera invalid.");
+	}
+}
+
+- (IBAction)registerSpot:(id)sender {
+    // アラートビューを作成
+    // キャンセルボタンを表示しない場合はcancelButtonTitleにnilを指定
+    UIAlertView *alert = [[UIAlertView alloc]
+                          initWithTitle:@"ほぞん"
+                          message:@"実行しますか？"
+                          delegate:self
+                          cancelButtonTitle:@"いいえ"
+                          otherButtonTitles:@"はい", nil];
+    [alert show];
 }
 
 @end
