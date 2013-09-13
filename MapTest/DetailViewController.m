@@ -9,8 +9,8 @@
 #import "DetailViewController.h"
 #import "SVProgressHUD.h"
 
-//define URL_STRING @"http://172.30.254.141:8000/"
-#define URL_STRING @"http://192.168.11.2:8000/"
+#define URL_STRING @"http://172.30.254.141:8000/"
+//#define URL_STRING @"http://192.168.11.2:8000/"
 //#define URL_STRING @"http://ec2-54-250-229-175.ap-northeast-1.compute.amazonaws.com:8000/"
 
 @interface DetailViewController ()
@@ -58,6 +58,11 @@
     
     self.spotLabel.text = spotDic[@"title"];
     self.spotDesc.text = spotDic[@"desc"];
+    
+    int tmp = [spotDic[@"value"] intValue];
+    NSString *value = [NSString stringWithFormat:@"%d", tmp];
+    NSString *valueText = [value stringByAppendingString:@" ぐっど！"];
+    self.valueLabel.text = valueText;
     
     NSString* picPath = spotDic[@"pic"];
     NSString* picAddress = [dir stringByAppendingString:picPath];

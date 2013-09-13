@@ -299,12 +299,10 @@
 - (void)mapView:(GMSMapView *)mapView didTapInfoWindowOfMarker:(GMSMarker* )marker{
    [SVProgressHUD showWithStatus:@"通信中" maskType:SVProgressHUDMaskTypeBlack];
     argument = marker.userData;
-    NSLog(@"Jump to %@", argument);
-        
+    
     DetailViewController *detailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"spotDetailFromMap"];
     
     detailViewController.argument = [[NSString alloc] initWithString:argument];//argument;
-    NSLog(@"prepare\n%@", argument);
     
     [self presentViewController:detailViewController animated:YES completion:^(void){
         [SVProgressHUD dismiss];

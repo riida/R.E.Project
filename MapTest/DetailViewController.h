@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *spotLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *spotPicture;
 @property (weak, nonatomic) IBOutlet UILabel *spotDesc;
+@property (weak, nonatomic) IBOutlet UILabel *valueLabel;
 
 
 - (IBAction)valueButton:(id)sender;

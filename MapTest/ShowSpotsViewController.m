@@ -88,7 +88,8 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     cell.textLabel.text = [[results objectAtIndex:indexPath.row] objectForKey:@"title"];
-    cell.detailTextLabel.text = [[results objectAtIndex:indexPath.row] objectForKey:@"desc"];
+    NSString *value = [[[results objectAtIndex:indexPath.row] objectForKey:@"value"] stringByAppendingString:@" ぐっど！"];
+    cell.detailTextLabel.text = value;
     UIImage *MK = [UIImage imageNamed:@"blue"];
     UIImage *newMK = [self resizeImage:MK rect:CGRectMake(0,0,50,50)];
     cell.imageView.image = newMK;
