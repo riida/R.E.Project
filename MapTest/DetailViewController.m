@@ -21,7 +21,6 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        [SVProgressHUD showWithStatus:@"通信中" maskType:SVProgressHUDMaskTypeBlack];
         // Custom initialization
     }
     return self;
@@ -31,7 +30,7 @@
 {
     [super viewDidLoad];
     self.spotLabel.text = _argument;
-    //[SVProgressHUD showWithStatus:@"通信中" maskType:SVProgressHUDMaskTypeBlack];
+    [SVProgressHUD showWithStatus:@"通信中" maskType:SVProgressHUDMaskTypeBlack];
     NSString* dir = URL_STRING;
     NSString* picId = _argument;
     NSString* base = [dir stringByAppendingString:@"spot?id="];
@@ -45,18 +44,18 @@
                     sendSynchronousRequest:request
                     returningResponse:&response
                     error:&error];
-    
-    [SVProgressHUD dismiss];
 
     spotDic = [NSJSONSerialization JSONObjectWithData:data
                                                      options:NSJSONReadingAllowFragments
                                                        error:&error];
     
+    [SVProgressHUD dismiss];
+    
     self.spotLabel.text = spotDic[@"title"];
     self.spotDesc.text = spotDic[@"desc"];
     
-    int tmp = [spotDic[@"value"] intValue];
-    NSString *value = [NSString stringWithFormat:@"%d", tmp];
+    currentValue = [spotDic[@"value"] intValue];
+    NSString *value = [NSString stringWithFormat:@"%d", currentValue];
     NSString *valueText = [value stringByAppendingString:@" ぐっど！"];
     self.valueLabel.text = valueText;
     
@@ -78,6 +77,10 @@
 //いいねボタンの処理
 - (IBAction)valueButton:(id)sender {
     
+    currentValue++;
+    NSString *value = [NSString stringWithFormat:@"%d", currentValue];
+    NSString *valueText = [value stringByAppendingString:@" ぐっど！"];
+    self.valueLabel.text = valueText;
     NSString* dir = URL_STRING;
     NSString* picId = _argument;
     NSString* base = [dir stringByAppendingString:@"estimate?id="];
@@ -87,16 +90,9 @@
                              requestWithURL:url];
     NSURLResponse* response = nil;
     NSError* error = nil;
-    NSData* data = [NSURLConnection
-                    sendSynchronousRequest:request
-                    returningResponse:&response
-                    error:&error];
-    
-    NSDictionary *newSpotDic = [NSJSONSerialization JSONObjectWithData:data
-                                                            options:NSJSONReadingAllowFragments
-                                                                 error:&error];
-    NSLog(@"oldValue : %@", spotDic[@"value"]);
-    NSLog(@"newValue : %@", newSpotDic[@"value"]);
+    [NSURLConnection sendSynchronousRequest:request
+                          returningResponse:&response
+                                      error:&error];
     
 }
 @end

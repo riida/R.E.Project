@@ -15,7 +15,9 @@
 #define URL_STRING @"http://192.168.11.2:8000/"
 //#define URL_STRING @"http://ec2-54-250-229-175.ap-northeast-1.compute.amazonaws.com:8000/"
 
-@interface DetailViewController : UIViewController
+@interface DetailViewController : UIViewController{
+    int currentValue;
+}
 
 @property (strong, nonatomic)NSString *argument;
 @property (weak, nonatomic) IBOutlet UILabel *spotLabel;
