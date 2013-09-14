@@ -52,8 +52,8 @@
     }
 
     // Do any additional setup after loading the view, typically from a nib.
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:35.65
-                                                            longitude:139.69
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:35.653623
+                                                            longitude:139.692890
                                                                  zoom:17];
     mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
     mapView_.myLocationEnabled = YES;
@@ -123,7 +123,7 @@
         if(inFlag == YES)
         {
             // ボタン群のAパターンを作成する
-            UIBarButtonItem * btn0 = [[UIBarButtonItem alloc] initWithTitle:@"フィルタ" style:UIBarButtonItemStyleBordered target:self action:@selector(onTapChangeA:)];
+            UIBarButtonItem * btn0 = [[UIBarButtonItem alloc] initWithTitle:@"機能" style:UIBarButtonItemStyleBordered target:self action:@selector(onTapChangeA:)];
             UIBarButtonItem * btn1 = [[UIBarButtonItem alloc] initWithTitle:@"おも" style:UIBarButtonItemStyleBordered target:self action:@selector( onFilterOmo:)];
             UIBarButtonItem * btn2 = [[UIBarButtonItem alloc] initWithTitle:@"萌" style:UIBarButtonItemStyleBordered target:self action:@selector( onFilterMoe:)];
             UIBarButtonItem * btn3 = [[UIBarButtonItem alloc] initWithTitle:@"珍" style:UIBarButtonItemStyleBordered target:self action:@selector( onFilterTin:)];
@@ -133,7 +133,7 @@
         else
         {
             // ボタン群のBパターンを作成する
-            UIBarButtonItem * btn0 = [[UIBarButtonItem alloc] initWithTitle:@"機能" style:UIBarButtonItemStyleBordered target:self action:@selector( onTapChangeB:)];
+            UIBarButtonItem * btn0 = [[UIBarButtonItem alloc] initWithTitle:@"フィルタ" style:UIBarButtonItemStyleBordered target:self action:@selector( onTapChangeB:)];
             UIBarButtonItem * btn1 = [[UIBarButtonItem alloc] initWithTitle:@"とうろく" style:UIBarButtonItemStyleBordered target:self action:@selector( addSpotButton:)];
             UIBarButtonItem * btn2 = [[UIBarButtonItem alloc] initWithTitle:@"にんき" style:UIBarButtonItemStyleBordered target:self action:@selector( showSpotsButton:)];
             
@@ -276,7 +276,7 @@
 
 //位置情報更新時
 -(void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation{
-    [mapView_ animateToLocation:[newLocation coordinate]];
+    //[mapView_ animateToLocation:[newLocation coordinate]];
     
     NSLog(@"didUpdateToLocation latitude=%f, longitude=%f",
           [newLocation coordinate].latitude,
