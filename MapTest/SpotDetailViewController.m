@@ -48,6 +48,11 @@
         NSData *data = [NSData dataWithContentsOfURL:url];
         UIImage* image = [[UIImage alloc] initWithData:data];
         self.spotNavi.title = [_detailItem[@"title"] stringByAppendingString:@"の詳細"];
+        NSString *value = _detailItem[@"value"];
+        int tmp = [value intValue];
+        NSString *tmp2 = [NSString stringWithFormat:@"%d", tmp];
+        NSString *valueText = [tmp2 stringByAppendingString:@" ぐっど！"];
+        self.valueLabel.text = valueText;
         self.spotPicture.image = image;
         NSLog(@"success");
     } else {

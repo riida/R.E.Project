@@ -123,13 +123,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		042346F217E2268500AFAC84 /* pin */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = pin;
-			sourceTree = "<group>";
-		};
 		04E18E5B17E1C2A0008CC6CD /* SVProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
@@ -151,7 +144,6 @@
 		B1BB544217D868360005663B = {
 			isa = PBXGroup;
 			children = (
-				042346F217E2268500AFAC84 /* pin */,
 				04E18E5B17E1C2A0008CC6CD /* SVProgressHUD */,
 				B1BB545417D868360005663B /* MapTest */,
 				B1BB544D17D868360005663B /* Frameworks */,

@@ -318,15 +318,22 @@
                                     <constraint firstAttribute="width" constant="204" id="cu6-IY-5aD"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yhy-Io-l25">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="JaW-PI-5yP" secondAttribute="bottom" constant="47" id="4zP-PC-9nB"/>
-                            <constraint firstItem="0YM-rq-pgc" firstAttribute="top" secondItem="8Tr-su-tDi" secondAttribute="top" constant="112" id="DJl-zb-O10"/>
+                            <constraint firstItem="JaW-PI-5yP" firstAttribute="centerX" secondItem="8Tr-su-tDi" secondAttribute="centerX" type="default" id="0Qb-ID-dSD"/>
+                            <constraint firstAttribute="bottom" secondItem="yhy-Io-l25" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="D2s-by-yM7"/>
                             <constraint firstItem="10C-UB-IbE" firstAttribute="top" secondItem="8Tr-su-tDi" secondAttribute="top" constant="66" id="Fno-tY-cLV"/>
+                            <constraint firstAttribute="bottom" secondItem="JaW-PI-5yP" secondAttribute="bottom" constant="67" id="G52-E6-1PJ"/>
                             <constraint firstItem="JaW-PI-5yP" firstAttribute="leading" secondItem="10C-UB-IbE" secondAttribute="leading" type="default" id="VLC-xK-by0"/>
-                            <constraint firstItem="0YM-rq-pgc" firstAttribute="centerX" secondItem="10C-UB-IbE" secondAttribute="centerX" type="default" id="cci-Sx-Y10"/>
-                            <constraint firstItem="10C-UB-IbE" firstAttribute="centerX" secondItem="8Tr-su-tDi" secondAttribute="centerX" type="default" id="nbK-mY-rwB"/>
+                            <constraint firstAttribute="trailing" secondItem="yhy-Io-l25" secondAttribute="trailing" constant="85" id="YAf-Wu-CQu"/>
+                            <constraint firstItem="JaW-PI-5yP" firstAttribute="centerX" secondItem="0YM-rq-pgc" secondAttribute="centerX" type="default" id="fXs-71-1GA"/>
+                            <constraint firstItem="JaW-PI-5yP" firstAttribute="top" secondItem="0YM-rq-pgc" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="yUv-ix-x3D"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="52B-bf-qnf"/>
@@ -336,6 +343,7 @@
                         <outlet property="spotNavi" destination="52B-bf-qnf" id="hzX-9a-KAi"/>
                         <outlet property="spotPicture" destination="0YM-rq-pgc" id="WWJ-UX-5Z0"/>
                         <outlet property="titleLabel" destination="10C-UB-IbE" id="5nK-di-o9N"/>
+                        <outlet property="valueLabel" destination="yhy-Io-l25" id="TSO-gm-hWI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="htY-VY-spf" userLabel="First Responder" sceneMemberID="firstResponder"/>

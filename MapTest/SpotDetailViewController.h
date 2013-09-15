@@ -24,5 +24,6 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *spotPicture;
 @property (weak, nonatomic) IBOutlet UINavigationItem *spotNavi;
+@property (weak, nonatomic) IBOutlet UILabel *valueLabel;
 
 @end
