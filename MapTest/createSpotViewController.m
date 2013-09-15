@@ -38,9 +38,6 @@
     _descTF.delegate = self;
     //[_cameraButton setTitle:@"かめら" forState:UIControlStateNormal];
     //[_sendButton setTitle:@"のこす" forState:UIControlStateNormal];
-
-    [SVProgressHUD showWithStatus:@"送信中"maskType:SVProgressHUDMaskTypeBlack];
-    [SVProgressHUD dismiss];
     
     //スポットのカテゴリの初期化
     spotCategory = CATEGORY_OMO;

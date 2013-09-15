@@ -19,7 +19,6 @@
 
 @implementation MapTestViewController{
     GMSMapView *mapView_;
-    NSMutableDictionary *markerDictionary;
 }
 
 @synthesize locationManager;
@@ -50,10 +49,10 @@
     } else {
         NSLog(@"Location services not available.");
     }
-
+    
     // Do any additional setup after loading the view, typically from a nib.
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:35.65
-                                                            longitude:139.69
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:35.653623
+                                                            longitude:139.692890
                                                                  zoom:17];
     mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
     mapView_.myLocationEnabled = YES;
@@ -71,14 +70,13 @@
     NSURLResponse* response = nil;
     NSError* error = nil;
     data = [NSURLConnection
-                    sendSynchronousRequest:request
-                    returningResponse:&response
-                    error:&error];
+            sendSynchronousRequest:request
+            returningResponse:&response
+            error:&error];
     
     if(data) {
         NSArray *results = [self parseJson:data];
-        markerDictionary = [NSMutableDictionary dictionaryWithCapacity:[results count]];
-
+        
         for(NSDictionary *spot in results){
             GMSMarker *marker = [[GMSMarker alloc] init];
             marker.position = CLLocationCoordinate2DMake([spot[@"place_lati"] doubleValue],[spot[@"place_long"] doubleValue]);
@@ -99,7 +97,6 @@
             marker.snippet = spot[@"desc"];
             marker.userData = spot[@"_id"];
             marker.map = mapView_;
-            [markerDictionary setObject:spot[@"title"] forKey:marker];
         }
     }
     
@@ -118,30 +115,30 @@
 }
 
 - (void)changeButtons:(BOOL)inFlag{
-        NSArray * newButtonArray = nil;
+    NSArray * newButtonArray = nil;
+    
+    if(inFlag == YES)
+    {
+        // ボタン群のAパターンを作成する
+        UIBarButtonItem * btn0 = [[UIBarButtonItem alloc] initWithTitle:@"機能" style:UIBarButtonItemStyleBordered target:self action:@selector(onTapChangeA:)];
+        UIBarButtonItem * btn1 = [[UIBarButtonItem alloc] initWithTitle:@"おも" style:UIBarButtonItemStyleBordered target:self action:@selector( onFilterOmo:)];
+        UIBarButtonItem * btn2 = [[UIBarButtonItem alloc] initWithTitle:@"萌" style:UIBarButtonItemStyleBordered target:self action:@selector( onFilterMoe:)];
+        UIBarButtonItem * btn3 = [[UIBarButtonItem alloc] initWithTitle:@"珍" style:UIBarButtonItemStyleBordered target:self action:@selector( onFilterTin:)];
+        UIBarButtonItem * btn4 = [[UIBarButtonItem alloc] initWithTitle:@"全" style:UIBarButtonItemStyleBordered target:self action:@selector( onNoFilter:)];
+        newButtonArray = [ NSArray arrayWithObjects:btn0, btn1, btn2, btn3, btn4, nil ];
+    }
+    else
+    {
+        // ボタン群のBパターンを作成する
+        UIBarButtonItem * btn0 = [[UIBarButtonItem alloc] initWithTitle:@"フィルタ" style:UIBarButtonItemStyleBordered target:self action:@selector( onTapChangeB:)];
+        UIBarButtonItem * btn1 = [[UIBarButtonItem alloc] initWithTitle:@"とうろく" style:UIBarButtonItemStyleBordered target:self action:@selector( addSpotButton:)];
+        UIBarButtonItem * btn2 = [[UIBarButtonItem alloc] initWithTitle:@"にんき" style:UIBarButtonItemStyleBordered target:self action:@selector( showSpotsButton:)];
         
-        if(inFlag == YES)
-        {
-            // ボタン群のAパターンを作成する
-            UIBarButtonItem * btn0 = [[UIBarButtonItem alloc] initWithTitle:@"フィルタ" style:UIBarButtonItemStyleBordered target:self action:@selector(onTapChangeA:)];
-            UIBarButtonItem * btn1 = [[UIBarButtonItem alloc] initWithTitle:@"おも" style:UIBarButtonItemStyleBordered target:self action:@selector( onFilterOmo:)];
-            UIBarButtonItem * btn2 = [[UIBarButtonItem alloc] initWithTitle:@"萌" style:UIBarButtonItemStyleBordered target:self action:@selector( onFilterMoe:)];
-            UIBarButtonItem * btn3 = [[UIBarButtonItem alloc] initWithTitle:@"珍" style:UIBarButtonItemStyleBordered target:self action:@selector( onFilterTin:)];
-            UIBarButtonItem * btn4 = [[UIBarButtonItem alloc] initWithTitle:@"全" style:UIBarButtonItemStyleBordered target:self action:@selector( onNoFilter:)];
-            newButtonArray = [ NSArray arrayWithObjects:btn0, btn1, btn2, btn3, btn4, nil ];
-        }
-        else
-        {
-            // ボタン群のBパターンを作成する
-            UIBarButtonItem * btn0 = [[UIBarButtonItem alloc] initWithTitle:@"機能" style:UIBarButtonItemStyleBordered target:self action:@selector( onTapChangeB:)];
-            UIBarButtonItem * btn1 = [[UIBarButtonItem alloc] initWithTitle:@"とうろく" style:UIBarButtonItemStyleBordered target:self action:@selector( addSpotButton:)];
-            UIBarButtonItem * btn2 = [[UIBarButtonItem alloc] initWithTitle:@"にんき" style:UIBarButtonItemStyleBordered target:self action:@selector( showSpotsButton:)];
-            
-            newButtonArray = [ NSArray arrayWithObjects:btn0, btn1, btn2, nil ];
-        }
-        // アニメーション付きでボタンを切り替える
-        [toolBar setItems:newButtonArray animated:YES ];
-        return;
+        newButtonArray = [ NSArray arrayWithObjects:btn0, btn1, btn2, nil ];
+    }
+    // アニメーション付きでボタンを切り替える
+    [toolBar setItems:newButtonArray animated:YES ];
+    return;
 }
 
 - (void)onTapChangeA:(id)inSender
@@ -157,25 +154,27 @@
 }
 
 -(void)onNoFilter:(id)inSender{
+    [mapView_ clear];
     [self makeMarker:CATEGORY_ZEN];
 }
 
 -(void)onFilterOmo:(id)inSender{
+    [mapView_ clear];
     [self makeMarker:CATEGORY_OMO];
 }
 
 -(void)onFilterMoe:(id)inSender{
+    [mapView_ clear];
     [self makeMarker:CATEGORY_MOE];
 }
 
 -(void)onFilterTin:(id)inSender{
+    [mapView_ clear];
     [self makeMarker:CATEGORY_TIN];
 }
 
 -(void)makeMarker:(int)category{
-    [mapView_ clear];
     NSArray *results = [self parseJson:data];
-    markerDictionary = [NSMutableDictionary dictionaryWithCapacity:[results count]];
     
     switch (category) {
         case CATEGORY_OMO:
@@ -188,7 +187,6 @@
                     marker.snippet = spot[@"desc"];
                     marker.userData = spot[@"_id"];
                     marker.map = mapView_;
-                    [markerDictionary setObject:spot[@"title"] forKey:marker];
                 }
             }
             break;
@@ -203,7 +201,6 @@
                     marker.snippet = spot[@"desc"];
                     marker.userData = spot[@"_id"];
                     marker.map = mapView_;
-                    [markerDictionary setObject:spot[@"title"] forKey:marker];
                 }
             }
             break;
@@ -218,7 +215,6 @@
                     marker.snippet = spot[@"desc"];
                     marker.userData = spot[@"_id"];
                     marker.map = mapView_;
-                    [markerDictionary setObject:spot[@"title"] forKey:marker];
                 }
             }
             break;
@@ -228,7 +224,7 @@
                 marker.position = CLLocationCoordinate2DMake([spot[@"place_lati"] doubleValue], [spot[@"place_long"] doubleValue]);
                 switch ([spot[@"category"] intValue]) {
                     case CATEGORY_OMO:
-                    marker.icon = omoMarker;
+                        marker.icon = omoMarker;
                         break;
                     case CATEGORY_MOE:
                         marker.icon = moeMarker;
@@ -243,9 +239,8 @@
                 marker.snippet = spot[@"desc"];
                 marker.userData = spot[@"_id"];
                 marker.map = mapView_;
-                [markerDictionary setObject:spot[@"title"] forKey:marker];
-        }
-        break;
+            }
+            break;
     }
 }
 
@@ -276,7 +271,7 @@
 
 //位置情報更新時
 -(void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation{
-    [mapView_ animateToLocation:[newLocation coordinate]];
+    //[mapView_ animateToLocation:[newLocation coordinate]];
     
     NSLog(@"didUpdateToLocation latitude=%f, longitude=%f",
           [newLocation coordinate].latitude,
@@ -297,7 +292,7 @@
 }
 
 - (void)mapView:(GMSMapView *)mapView didTapInfoWindowOfMarker:(GMSMarker* )marker{
-   [SVProgressHUD showWithStatus:@"通信中" maskType:SVProgressHUDMaskTypeBlack];
+    [SVProgressHUD showWithStatus:@"通信中" maskType:SVProgressHUDMaskTypeBlack];
     argument = marker.userData;
     
     DetailViewController *detailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"spotDetailFromMap"];
